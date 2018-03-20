@@ -1,0 +1,10 @@
+D:\VS_Practice\CTS\EAR\bin\Debug\CTS.exe.config
+D:\VS_Practice\CTS\EAR\obj\Debug\CTS.Properties.Resources.resources
+D:\VS_Practice\CTS\EAR\obj\Debug\CTS.csproj.GenerateResource.Cache
+D:\VS_Practice\CTS\EAR\bin\Debug\CTS.exe
+D:\VS_Practice\CTS\EAR\bin\Debug\CTS.pdb
+D:\VS_Practice\CTS\EAR\obj\Debug\CTS.exe
+D:\VS_Practice\CTS\EAR\obj\Debug\CTS.pdb
+D:\VS_Practice\CTS\EAR\obj\Debug\CTS.csprojResolveAssemblyReference.cache
+D:\VS_Practice\CTS\EAR\obj\Debug\CTS.Form1.resources
+D:\VS_Practice\CTS\EAR\obj\Debug\CTS.Form_aboutUs_english.resources
