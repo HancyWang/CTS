@@ -256,6 +256,7 @@
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.exportTxtFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -284,7 +285,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1292, 593);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1014, 593);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel3
@@ -513,7 +514,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(188, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1101, 587);
+            this.panel1.Size = new System.Drawing.Size(823, 587);
             this.panel1.TabIndex = 3;
             // 
             // groupBox4
@@ -525,7 +526,7 @@
             this.groupBox4.Controls.Add(this.textBox_paraCfgFilePath);
             this.groupBox4.Location = new System.Drawing.Point(0, 55);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1101, 82);
+            this.groupBox4.Size = new System.Drawing.Size(1377, 82);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Files";
@@ -2527,7 +2528,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(0, 0);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1101, 54);
+            this.groupBox5.Size = new System.Drawing.Size(1100, 54);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Operation";
@@ -2597,7 +2598,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1298, 613);
+            this.groupBox2.Size = new System.Drawing.Size(1020, 613);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
@@ -2614,7 +2615,8 @@
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.软件版本ToolStripMenuItem});
+            this.软件版本ToolStripMenuItem,
+            this.exportTxtFileToolStripMenuItem});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
             this.帮助ToolStripMenuItem.Text = "Help";
@@ -2635,7 +2637,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1298, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1020, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -2663,11 +2665,18 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Parameter File(*.cts_cfg)|*.cts_cfg|All Files(*.*)|*.*";
             // 
+            // exportTxtFileToolStripMenuItem
+            // 
+            this.exportTxtFileToolStripMenuItem.Name = "exportTxtFileToolStripMenuItem";
+            this.exportTxtFileToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.exportTxtFileToolStripMenuItem.Text = "export txt file";
+            this.exportTxtFileToolStripMenuItem.Click += new System.EventHandler(this.exportTxtFileToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 638);
+            this.ClientSize = new System.Drawing.Size(1020, 638);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2934,6 +2943,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.ToolStripMenuItem exportTxtFileToolStripMenuItem;
     }
 }
 
