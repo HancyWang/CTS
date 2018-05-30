@@ -65,6 +65,7 @@ namespace CTS
             public byte FREQUENCE;
             public byte DUTY_CYCLE;
             public byte PERIOD;
+            public byte DWELL; //新增一个参数，这个和PERIOD配合使用，只对PWM3有效
             public byte NUM_OF_CYCLES;
             public byte WAIT_BETWEEN;
             public byte WAIT_AFTER;
@@ -115,6 +116,15 @@ namespace CTS
             this.textBox_threshold_PWM3_serial5.Text = "1";
             this.textBox_threshold_PWM3_serial6.Text = "1";
 
+            #endregion
+
+            #region
+            this.textBox_dwell_1.Text = "6";
+            this.textBox_dwell_2.Text = "6";
+            this.textBox_dwell_3.Text = "6";
+            this.textBox_dwell_4.Text = "6";
+            this.textBox_dwell_5.Text = "6";
+            this.textBox_dwell_6.Text = "6";
             #endregion
 
             //频率默认1Hz，范围为：[1,255Hz]
@@ -374,12 +384,12 @@ namespace CTS
                 m_mode1_list.Add(pwm2_s5);
                 m_mode1_list.Add(pwm2_s6);
 
-                PARAMETER pwm3_s1 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x31, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s2 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x32, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s3 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x33, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s4 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x34, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s5 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x35, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s6 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x36, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s1 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x31, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s2 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x32, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s3 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x33, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s4 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x34, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s5 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x35, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s6 = new PARAMETER() { MODE_SELECTED = 0x00, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x36, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
 
                 m_mode1_list.Add(pwm3_s1);
                 m_mode1_list.Add(pwm3_s2);
@@ -421,12 +431,12 @@ namespace CTS
                 m_mode2_list.Add(pwm2_s5);
                 m_mode2_list.Add(pwm2_s6);
 
-                PARAMETER pwm3_s1 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x31, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s2 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x32, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s3 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x33, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s4 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x34, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s5 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x35, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s6 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x36, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s1 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x31, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s2 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x32, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s3 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x33, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s4 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x34, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s5 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x35, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s6 = new PARAMETER() { MODE_SELECTED = 0x01, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x36, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
 
                 m_mode2_list.Add(pwm3_s1);
                 m_mode2_list.Add(pwm3_s2);
@@ -469,12 +479,12 @@ namespace CTS
                 m_mode3_list.Add(pwm2_s5);
                 m_mode3_list.Add(pwm2_s6);
 
-                PARAMETER pwm3_s1 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x31, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s2 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x32, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s3 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x33, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s4 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x34, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s5 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x35, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
-                PARAMETER pwm3_s6 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x36, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s1 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x31, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s2 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x32, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s3 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x33, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s4 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x34, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s5 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x35, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
+                PARAMETER pwm3_s6 = new PARAMETER() { MODE_SELECTED = 0x02, ENABLE = 0x01, PWM_SERIAL_SELECTED = 0x36, THRESHOLD = 0x01, FREQUENCE = 0x01, DUTY_CYCLE = 0x0A, PERIOD = 0x01, DWELL = 0x06, NUM_OF_CYCLES = 0x01, WAIT_BETWEEN = 0x00, WAIT_AFTER = 0x00 };
 
                 m_mode3_list.Add(pwm3_s1);
                 m_mode3_list.Add(pwm3_s2);
@@ -873,6 +883,7 @@ namespace CTS
                             if (para.ENABLE == 0x01)
                             {
                                 this.textBox_threshold_PWM3_serial1.Enabled = true;
+                                this.textBox_dwell_1.Enabled = true;
                                 this.textBox_freq_PWM3_serial1.Enabled = true;
                                 this.textBox_dutyCycle_PWM3_serial1.Enabled = true;
                                 this.textBox_period_PWM3_serial1.Enabled = true;
@@ -883,6 +894,7 @@ namespace CTS
                             else
                             {
                                 this.textBox_threshold_PWM3_serial1.Enabled = false;
+                                this.textBox_dwell_1.Enabled = false;
                                 this.textBox_freq_PWM3_serial1.Enabled = false;
                                 this.textBox_dutyCycle_PWM3_serial1.Enabled = false;
                                 this.textBox_period_PWM3_serial1.Enabled = false;
@@ -891,6 +903,7 @@ namespace CTS
                                 this.textBox_waitAfter_PWM3_serial1.Enabled = false;
                             }
                             this.textBox_threshold_PWM3_serial1.Text = Convert.ToInt32(para.THRESHOLD).ToString();
+                            this.textBox_dwell_1.Text = Convert.ToInt32(para.DWELL).ToString();
                             this.textBox_freq_PWM3_serial1.Text = Convert.ToInt32(para.FREQUENCE).ToString();
                             this.textBox_dutyCycle_PWM3_serial1.Text = Convert.ToInt32(para.DUTY_CYCLE).ToString();
                             this.textBox_period_PWM3_serial1.Text = Convert.ToInt32(para.PERIOD).ToString();
@@ -905,6 +918,7 @@ namespace CTS
                             if (para.ENABLE == 0x01)
                             {
                                 this.textBox_threshold_PWM3_serial2.Enabled = true;
+                                this.textBox_dwell_2.Enabled = true;
                                 this.textBox_freq_PWM3_serial2.Enabled = true;
                                 this.textBox_dutyCycle_PWM3_serial2.Enabled = true;
                                 this.textBox_period_PWM3_serial2.Enabled = true;
@@ -915,6 +929,7 @@ namespace CTS
                             else
                             {
                                 this.textBox_threshold_PWM3_serial2.Enabled = false;
+                                this.textBox_dwell_2.Enabled = false;
                                 this.textBox_freq_PWM3_serial2.Enabled = false;
                                 this.textBox_dutyCycle_PWM3_serial2.Enabled = false;
                                 this.textBox_period_PWM3_serial2.Enabled = false;
@@ -924,6 +939,7 @@ namespace CTS
                             }
                             
                             this.textBox_threshold_PWM3_serial2.Text = Convert.ToInt32(para.THRESHOLD).ToString();
+                            this.textBox_dwell_2.Text = Convert.ToInt32(para.DWELL).ToString();
                             this.textBox_freq_PWM3_serial2.Text = Convert.ToInt32(para.FREQUENCE).ToString();
                             this.textBox_dutyCycle_PWM3_serial2.Text = Convert.ToInt32(para.DUTY_CYCLE).ToString();
                             this.textBox_period_PWM3_serial2.Text = Convert.ToInt32(para.PERIOD).ToString();
@@ -938,6 +954,7 @@ namespace CTS
                             if (para.ENABLE == 0x01)
                             {
                                 this.textBox_threshold_PWM3_serial3.Enabled = true;
+                                this.textBox_dwell_3.Enabled = true;
                                 this.textBox_freq_PWM3_serial3.Enabled = true;
                                 this.textBox_dutyCycle_PWM3_serial3.Enabled = true;
                                 this.textBox_period_PWM3_serial3.Enabled = true;
@@ -948,6 +965,7 @@ namespace CTS
                             else
                             {
                                 this.textBox_threshold_PWM3_serial3.Enabled = false;
+                                this.textBox_dwell_3.Enabled = false;
                                 this.textBox_freq_PWM3_serial3.Enabled = false;
                                 this.textBox_dutyCycle_PWM3_serial3.Enabled = false;
                                 this.textBox_period_PWM3_serial3.Enabled = false;
@@ -956,6 +974,7 @@ namespace CTS
                                 this.textBox_waitAfter_PWM3_serial3.Enabled = false;
                             }
                             this.textBox_threshold_PWM3_serial3.Text = Convert.ToInt32(para.THRESHOLD).ToString();
+                            this.textBox_dwell_3.Text = Convert.ToInt32(para.DWELL).ToString();
                             this.textBox_freq_PWM3_serial3.Text = Convert.ToInt32(para.FREQUENCE).ToString();
                             this.textBox_dutyCycle_PWM3_serial3.Text = Convert.ToInt32(para.DUTY_CYCLE).ToString();
                             this.textBox_period_PWM3_serial3.Text = Convert.ToInt32(para.PERIOD).ToString();
@@ -970,6 +989,7 @@ namespace CTS
                             if (para.ENABLE == 0x01)
                             {
                                 this.textBox_threshold_PWM3_serial4.Enabled = true;
+                                this.textBox_dwell_4.Enabled = true;
                                 this.textBox_freq_PWM3_serial4.Enabled = true;
                                 this.textBox_dutyCycle_PWM3_serial4.Enabled = true;
                                 this.textBox_period_PWM3_serial4.Enabled = true;
@@ -980,6 +1000,7 @@ namespace CTS
                             else
                             {
                                 this.textBox_threshold_PWM3_serial4.Enabled = false;
+                                this.textBox_dwell_4.Enabled = false;
                                 this.textBox_freq_PWM3_serial4.Enabled = false;
                                 this.textBox_dutyCycle_PWM3_serial4.Enabled = false;
                                 this.textBox_period_PWM3_serial4.Enabled = false;
@@ -988,6 +1009,7 @@ namespace CTS
                                 this.textBox_waitAfter_PWM3_serial4.Enabled = false;
                             }
                             this.textBox_threshold_PWM3_serial4.Text = Convert.ToInt32(para.THRESHOLD).ToString();
+                            this.textBox_dwell_4.Text = Convert.ToInt32(para.DWELL).ToString();
                             this.textBox_freq_PWM3_serial4.Text = Convert.ToInt32(para.FREQUENCE).ToString();
                             this.textBox_dutyCycle_PWM3_serial4.Text = Convert.ToInt32(para.DUTY_CYCLE).ToString();
                             this.textBox_period_PWM3_serial4.Text = Convert.ToInt32(para.PERIOD).ToString();
@@ -1002,6 +1024,7 @@ namespace CTS
                             if (para.ENABLE == 0x01)
                             {
                                 this.textBox_threshold_PWM3_serial5.Enabled = true;
+                                this.textBox_dwell_5.Enabled = true;
                                 this.textBox_freq_PWM3_serial5.Enabled = true;
                                 this.textBox_dutyCycle_PWM3_serial5.Enabled = true;
                                 this.textBox_period_PWM3_serial5.Enabled = true;
@@ -1012,6 +1035,7 @@ namespace CTS
                             else
                             {
                                 this.textBox_threshold_PWM3_serial5.Enabled = false;
+                                this.textBox_dwell_5.Enabled = false;
                                 this.textBox_freq_PWM3_serial5.Enabled = false;
                                 this.textBox_dutyCycle_PWM3_serial5.Enabled = false;
                                 this.textBox_period_PWM3_serial5.Enabled = false;
@@ -1020,6 +1044,7 @@ namespace CTS
                                 this.textBox_waitAfter_PWM3_serial5.Enabled = false;
                             }
                             this.textBox_threshold_PWM3_serial5.Text = Convert.ToInt32(para.THRESHOLD).ToString();
+                            this.textBox_dwell_5.Text = Convert.ToInt32(para.DWELL).ToString();
                             this.textBox_freq_PWM3_serial5.Text = Convert.ToInt32(para.FREQUENCE).ToString();
                             this.textBox_dutyCycle_PWM3_serial5.Text = Convert.ToInt32(para.DUTY_CYCLE).ToString();
                             this.textBox_period_PWM3_serial5.Text = Convert.ToInt32(para.PERIOD).ToString();
@@ -1034,6 +1059,7 @@ namespace CTS
                             if (para.ENABLE == 0x01)
                             {
                                 this.textBox_threshold_PWM3_serial6.Enabled = true;
+                                this.textBox_dwell_6.Enabled = true;
                                 this.textBox_freq_PWM3_serial6.Enabled = true;
                                 this.textBox_dutyCycle_PWM3_serial6.Enabled = true;
                                 this.textBox_period_PWM3_serial6.Enabled = true;
@@ -1044,6 +1070,7 @@ namespace CTS
                             else
                             {
                                 this.textBox_threshold_PWM3_serial6.Enabled = false;
+                                this.textBox_dwell_6.Enabled = false;
                                 this.textBox_freq_PWM3_serial6.Enabled = false;
                                 this.textBox_dutyCycle_PWM3_serial6.Enabled = false;
                                 this.textBox_period_PWM3_serial6.Enabled = false;
@@ -1052,6 +1079,7 @@ namespace CTS
                                 this.textBox_waitAfter_PWM3_serial6.Enabled = false;
                             }
                             this.textBox_threshold_PWM3_serial6.Text = Convert.ToInt32(para.THRESHOLD).ToString();
+                            this.textBox_dwell_6.Text = Convert.ToInt32(para.DWELL).ToString();
                             this.textBox_freq_PWM3_serial6.Text = Convert.ToInt32(para.FREQUENCE).ToString();
                             this.textBox_dutyCycle_PWM3_serial6.Text = Convert.ToInt32(para.DUTY_CYCLE).ToString();
                             this.textBox_period_PWM3_serial6.Text = Convert.ToInt32(para.PERIOD).ToString();
@@ -1096,8 +1124,8 @@ namespace CTS
             FileStream fs = new FileStream(path, FileMode.Open);
             BinaryReader br = new BinaryReader(fs, Encoding.ASCII);
             
-            byte[] bt = new byte[9];
-            while (br.Read(bt, 0, 9) > 0)
+            byte[] bt = new byte[10];
+            while (br.Read(bt, 0, 10) > 0)
             {
                 PARAMETER para = new PARAMETER();
                 
@@ -1107,9 +1135,10 @@ namespace CTS
                 para.FREQUENCE = bt[3];
                 para.DUTY_CYCLE = bt[4];
                 para.PERIOD = bt[5];
-                para.NUM_OF_CYCLES = bt[6];
-                para.WAIT_BETWEEN = bt[7];
-                para.WAIT_AFTER = bt[8];
+                para.DWELL = bt[6];
+                para.NUM_OF_CYCLES = bt[7];
+                para.WAIT_BETWEEN = bt[8];
+                para.WAIT_AFTER = bt[9];
                 list.Add(para);
             }
             br.Close();
@@ -1612,6 +1641,7 @@ namespace CTS
             if (this.checkBox_PWM3_serial1.Checked == false)
             {
                 this.textBox_threshold_PWM3_serial1.Enabled = false;
+                this.textBox_dwell_1.Enabled = false;
                 this.textBox_freq_PWM3_serial1.Enabled = false;
                 this.textBox_dutyCycle_PWM3_serial1.Enabled = false;
                 this.textBox_period_PWM3_serial1.Enabled = false;
@@ -1622,6 +1652,7 @@ namespace CTS
             else
             {
                 this.textBox_threshold_PWM3_serial1.Enabled = true;
+                this.textBox_dwell_1.Enabled = true;
                 this.textBox_freq_PWM3_serial1.Enabled = true;
                 this.textBox_dutyCycle_PWM3_serial1.Enabled = true;
                 this.textBox_period_PWM3_serial1.Enabled = true;
@@ -1642,6 +1673,7 @@ namespace CTS
             if (this.checkBox_PWM3_serial2.Checked == false)
             {
                 this.textBox_threshold_PWM3_serial2.Enabled = false;
+                this.textBox_dwell_2.Enabled = false;
                 this.textBox_freq_PWM3_serial2.Enabled = false;
                 this.textBox_dutyCycle_PWM3_serial2.Enabled = false;
                 this.textBox_period_PWM3_serial2.Enabled = false;
@@ -1652,6 +1684,7 @@ namespace CTS
             else
             {
                 this.textBox_threshold_PWM3_serial2.Enabled = true;
+                this.textBox_dwell_2.Enabled = true;
                 this.textBox_freq_PWM3_serial2.Enabled = true;
                 this.textBox_dutyCycle_PWM3_serial2.Enabled = true;
                 this.textBox_period_PWM3_serial2.Enabled = true;
@@ -1672,6 +1705,7 @@ namespace CTS
             if (this.checkBox_PWM3_serial3.Checked == false)
             {
                 this.textBox_threshold_PWM3_serial3.Enabled = false;
+                this.textBox_dwell_3.Enabled = false;
                 this.textBox_freq_PWM3_serial3.Enabled = false;
                 this.textBox_dutyCycle_PWM3_serial3.Enabled = false;
                 this.textBox_period_PWM3_serial3.Enabled = false;
@@ -1682,6 +1716,7 @@ namespace CTS
             else
             {
                 this.textBox_threshold_PWM3_serial3.Enabled = true;
+                this.textBox_dwell_3.Enabled = true;
                 this.textBox_freq_PWM3_serial3.Enabled = true;
                 this.textBox_dutyCycle_PWM3_serial3.Enabled = true;
                 this.textBox_period_PWM3_serial3.Enabled = true;
@@ -1702,6 +1737,7 @@ namespace CTS
             if (this.checkBox_PWM3_serial4.Checked == false)
             {
                 this.textBox_threshold_PWM3_serial4.Enabled = false;
+                this.textBox_dwell_4.Enabled = false;
                 this.textBox_freq_PWM3_serial4.Enabled = false;
                 this.textBox_dutyCycle_PWM3_serial4.Enabled = false;
                 this.textBox_period_PWM3_serial4.Enabled = false;
@@ -1712,6 +1748,7 @@ namespace CTS
             else
             {
                 this.textBox_threshold_PWM3_serial4.Enabled = true;
+                this.textBox_dwell_4.Enabled = true;
                 this.textBox_freq_PWM3_serial4.Enabled = true;
                 this.textBox_dutyCycle_PWM3_serial4.Enabled = true;
                 this.textBox_period_PWM3_serial4.Enabled = true;
@@ -1732,6 +1769,7 @@ namespace CTS
             if (this.checkBox_PWM3_serial5.Checked == false)
             {
                 this.textBox_threshold_PWM3_serial5.Enabled = false;
+                this.textBox_dwell_5.Enabled = false;
                 this.textBox_freq_PWM3_serial5.Enabled = false;
                 this.textBox_dutyCycle_PWM3_serial5.Enabled = false;
                 this.textBox_period_PWM3_serial5.Enabled = false;
@@ -1742,6 +1780,7 @@ namespace CTS
             else
             {
                 this.textBox_threshold_PWM3_serial5.Enabled = true;
+                this.textBox_dwell_5.Enabled = true;
                 this.textBox_freq_PWM3_serial5.Enabled = true;
                 this.textBox_dutyCycle_PWM3_serial5.Enabled = true;
                 this.textBox_period_PWM3_serial5.Enabled = true;
@@ -1762,6 +1801,7 @@ namespace CTS
             if (this.checkBox_PWM3_serial6.Checked == false)
             {
                 this.textBox_threshold_PWM3_serial6.Enabled = false;
+                this.textBox_dwell_6.Enabled = false;
                 this.textBox_freq_PWM3_serial6.Enabled = false;
                 this.textBox_dutyCycle_PWM3_serial6.Enabled = false;
                 this.textBox_period_PWM3_serial6.Enabled = false;
@@ -1772,6 +1812,7 @@ namespace CTS
             else
             {
                 this.textBox_threshold_PWM3_serial6.Enabled = true;
+                this.textBox_dwell_6.Enabled = true;
                 this.textBox_freq_PWM3_serial6.Enabled = true;
                 this.textBox_dutyCycle_PWM3_serial6.Enabled = true;
                 this.textBox_period_PWM3_serial6.Enabled = true;
@@ -2224,6 +2265,7 @@ namespace CTS
                     case 0x31:
                         para.ENABLE = this.checkBox_PWM3_serial1.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
                         para.THRESHOLD = Convert.ToByte(this.textBox_threshold_PWM3_serial1.Text);
+                        para.DWELL = Convert.ToByte(this.textBox_dwell_1.Text);
                         para.FREQUENCE = Convert.ToByte(this.textBox_freq_PWM3_serial1.Text);
                         para.DUTY_CYCLE = Convert.ToByte(this.textBox_dutyCycle_PWM3_serial1.Text);
                         para.PERIOD = Convert.ToByte(this.textBox_period_PWM3_serial1.Text);
@@ -2234,6 +2276,7 @@ namespace CTS
                     case 0x32:
                         para.ENABLE = this.checkBox_PWM3_serial2.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
                         para.THRESHOLD = Convert.ToByte(this.textBox_threshold_PWM3_serial2.Text);
+                        para.DWELL = Convert.ToByte(this.textBox_dwell_2.Text);
                         para.FREQUENCE = Convert.ToByte(this.textBox_freq_PWM3_serial2.Text);
                         para.DUTY_CYCLE = Convert.ToByte(this.textBox_dutyCycle_PWM3_serial2.Text);
                         para.PERIOD = Convert.ToByte(this.textBox_period_PWM3_serial2.Text);
@@ -2244,6 +2287,7 @@ namespace CTS
                     case 0x33:
                         para.ENABLE = this.checkBox_PWM3_serial3.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
                         para.THRESHOLD = Convert.ToByte(this.textBox_threshold_PWM3_serial3.Text);
+                        para.DWELL = Convert.ToByte(this.textBox_dwell_3.Text);
                         para.FREQUENCE = Convert.ToByte(this.textBox_freq_PWM3_serial3.Text);
                         para.DUTY_CYCLE = Convert.ToByte(this.textBox_dutyCycle_PWM3_serial3.Text);
                         para.PERIOD = Convert.ToByte(this.textBox_period_PWM3_serial3.Text);
@@ -2254,6 +2298,7 @@ namespace CTS
                     case 0x34:
                         para.ENABLE = this.checkBox_PWM3_serial4.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
                         para.THRESHOLD = Convert.ToByte(this.textBox_threshold_PWM3_serial4.Text);
+                        para.DWELL = Convert.ToByte(this.textBox_dwell_4.Text);
                         para.FREQUENCE = Convert.ToByte(this.textBox_freq_PWM3_serial4.Text);
                         para.DUTY_CYCLE = Convert.ToByte(this.textBox_dutyCycle_PWM3_serial4.Text);
                         para.PERIOD = Convert.ToByte(this.textBox_period_PWM3_serial4.Text);
@@ -2264,6 +2309,7 @@ namespace CTS
                     case 0x35:
                         para.ENABLE = this.checkBox_PWM3_serial5.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
                         para.THRESHOLD = Convert.ToByte(this.textBox_threshold_PWM3_serial5.Text);
+                        para.DWELL = Convert.ToByte(this.textBox_dwell_5.Text);
                         para.FREQUENCE = Convert.ToByte(this.textBox_freq_PWM3_serial5.Text);
                         para.DUTY_CYCLE = Convert.ToByte(this.textBox_dutyCycle_PWM3_serial5.Text);
                         para.PERIOD = Convert.ToByte(this.textBox_period_PWM3_serial5.Text);
@@ -2274,6 +2320,7 @@ namespace CTS
                     case 0x36:
                         para.ENABLE = this.checkBox_PWM3_serial6.Checked ? Convert.ToByte(1) : Convert.ToByte(0);
                         para.THRESHOLD = Convert.ToByte(this.textBox_threshold_PWM3_serial6.Text);
+                        para.DWELL = Convert.ToByte(this.textBox_dwell_6.Text);
                         para.FREQUENCE = Convert.ToByte(this.textBox_freq_PWM3_serial6.Text);
                         para.DUTY_CYCLE = Convert.ToByte(this.textBox_dutyCycle_PWM3_serial6.Text);
                         para.PERIOD = Convert.ToByte(this.textBox_period_PWM3_serial6.Text);
@@ -2339,6 +2386,7 @@ namespace CTS
                 bw.Write(parameter.FREQUENCE);
                 bw.Write(parameter.DUTY_CYCLE);
                 bw.Write(parameter.PERIOD);
+                bw.Write(parameter.DWELL);
                 bw.Write(parameter.NUM_OF_CYCLES);
                 bw.Write(parameter.WAIT_BETWEEN);
                 bw.Write(parameter.WAIT_AFTER);
@@ -2466,9 +2514,11 @@ namespace CTS
             }
             else if (PWM == 3)
             {
-                //4+54+2=60,帧头4字节(HEAD,LEN,CMDTYPE,FRAME_ID)+6(serial)*9(每个serial 9字节)+2(校验位,两位)
-                buffer = new byte[54 + 6];
-                buffer[LEN] = Convert.ToByte(54 + 6- 2);
+                ////4+54+2=60,帧头4字节(HEAD,LEN,CMDTYPE,FRAME_ID)+6(serial)*9(每个serial 9字节)+2(校验位,两位)
+                //buffer = new byte[54 + 6];
+                //4+60+2=66,帧头4字节(HEAD,LEN,CMDTYPE,FRAME_ID)+6(serial)*10(每个serial 10字节)+2(校验位,两位)
+                buffer = new byte[60 + 6];
+                buffer[LEN] = Convert.ToByte(60 + 6- 2);
             }
             else
             {
@@ -2492,6 +2542,10 @@ namespace CTS
                 buffer[j++] = m_mode1_list[i].FREQUENCE;
                 buffer[j++] = m_mode1_list[i].DUTY_CYCLE;
                 buffer[j++] = m_mode1_list[i].PERIOD;
+                if (PWM == 3)
+                {
+                    buffer[j++] = m_mode1_list[i].DWELL;
+                }
                 buffer[j++] = m_mode1_list[i].NUM_OF_CYCLES;
                 buffer[j++] = m_mode1_list[i].WAIT_BETWEEN;
                 buffer[j++] = m_mode1_list[i].WAIT_AFTER;
@@ -2517,8 +2571,8 @@ namespace CTS
             }
             else if (PWM == 3)
             {
-                buffer = new byte[54 + 6];
-                buffer[LEN] = Convert.ToByte(54 + 6 - 2);
+                buffer = new byte[60 + 6];
+                buffer[LEN] = Convert.ToByte(60 + 6 - 2);
             }
             else
             {
@@ -2542,6 +2596,10 @@ namespace CTS
                 buffer[j++] = m_mode2_list[i].FREQUENCE;
                 buffer[j++] = m_mode2_list[i].DUTY_CYCLE;
                 buffer[j++] = m_mode2_list[i].PERIOD;
+                if (PWM == 3)
+                {
+                    buffer[j++] = m_mode2_list[i].DWELL;
+                }
                 buffer[j++] = m_mode2_list[i].NUM_OF_CYCLES;
                 buffer[j++] = m_mode2_list[i].WAIT_BETWEEN;
                 buffer[j++] = m_mode2_list[i].WAIT_AFTER;
@@ -2568,8 +2626,8 @@ namespace CTS
             }
             else if (PWM == 3)
             {
-                buffer = new byte[54 + 6];
-                buffer[LEN] = Convert.ToByte(54 + 6 - 2);
+                buffer = new byte[60 + 6];
+                buffer[LEN] = Convert.ToByte(60 + 6 - 2);
             }
             else
             {
@@ -2592,6 +2650,10 @@ namespace CTS
                 buffer[j++] = m_mode3_list[i].FREQUENCE;
                 buffer[j++] = m_mode3_list[i].DUTY_CYCLE;
                 buffer[j++] = m_mode3_list[i].PERIOD;
+                if (PWM == 3)
+                {
+                    buffer[j++] = m_mode3_list[i].DWELL;
+                }
                 buffer[j++] = m_mode3_list[i].NUM_OF_CYCLES;
                 buffer[j++] = m_mode3_list[i].WAIT_BETWEEN;
                 buffer[j++] = m_mode3_list[i].WAIT_AFTER;
@@ -2923,6 +2985,25 @@ namespace CTS
             this.serialPort1.Write(buffer, 0, Convert.ToInt32(buffer[LEN]) + 2);
         }
 
+        private void SendQuery3ForParameters()
+        {
+            //下发获取参数的命令 frameID=0x05
+            byte[] buffer = new byte[7];
+            buffer[HEAD] = 0xFF;
+            buffer[LEN] = 0x05;
+            buffer[CMDTYPE] = 0x01;
+            buffer[FRAME_ID] = 0x0C;   //请求第三帧
+            buffer[4] = 0x01; //数据为0x01
+            int sum = 0;
+            for (int i = 1; i < Convert.ToInt32(buffer[LEN]); i++)
+            {
+                sum += buffer[i];
+            }
+            buffer[Convert.ToInt32(buffer[LEN])] = Convert.ToByte(sum / 256);
+            buffer[Convert.ToInt32(buffer[LEN]) + 1] = Convert.ToByte(sum % 256);
+            this.serialPort1.Write(buffer, 0, Convert.ToInt32(buffer[LEN]) + 2);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -2942,6 +3023,9 @@ namespace CTS
             System.Threading.Thread.Sleep(150);
 
             SendQuery2ForParameters();
+            System.Threading.Thread.Sleep(150);
+
+            SendQuery3ForParameters();
             //if(m_bRcvParamtersCompleted)
             //{
             //    SetPWMParameterFromList(this.comboBox_modeSelect.SelectedIndex+1);
@@ -2955,6 +3039,7 @@ namespace CTS
         {
             m_commPara.CYCLES = m_buffer[4];
             m_commPara.WAIT_BEFORE_START = m_buffer[5];
+            //接收公共参数
             this.textBox_cycles.Text = Convert.ToString(m_commPara.CYCLES);
             this.textBox_waitBeforeStart.Text = Convert.ToString(m_commPara.WAIT_BEFORE_START);
             if(m_mode1_list.Count!=0)
@@ -2988,17 +3073,45 @@ namespace CTS
                 para.FREQUENCE = m_buffer[j++];
                 para.DUTY_CYCLE = m_buffer[j++];
                 para.PERIOD = m_buffer[j++];
+                para.DWELL = m_buffer[j++];   //多了一个DWELL
                 para.NUM_OF_CYCLES = m_buffer[j++];
                 para.WAIT_BETWEEN = m_buffer[j++];
                 para.WAIT_AFTER = m_buffer[j++];
                 m_mode1_list.Add(para);
             }
 
+            //if (m_mode2_list.Count != 0)
+            //{
+            //    m_mode2_list.Clear();
+            //}
+
+            //for (int i = 0; i < 12; i++)  // Mode2-PWM1，Mode2-PWM2
+            //{
+            //    PARAMETER para = new PARAMETER();
+            //    para.MODE_SELECTED = 0x00;
+            //    para.PWM_SERIAL_SELECTED = m_buffer[j++];
+            //    para.ENABLE = m_buffer[j++];
+            //    para.FREQUENCE = m_buffer[j++];
+            //    para.DUTY_CYCLE = m_buffer[j++];
+            //    para.PERIOD = m_buffer[j++];
+            //    para.NUM_OF_CYCLES = m_buffer[j++];
+            //    para.WAIT_BETWEEN = m_buffer[j++];
+            //    para.WAIT_AFTER = m_buffer[j++];
+            //    m_mode2_list.Add(para);
+            //}
+            //MessageBox.Show("收到第1帧");
+        }
+
+        private void ParseFrame2()
+        {
+
             if (m_mode2_list.Count != 0)
             {
                 m_mode2_list.Clear();
             }
 
+            //解析frame1时，已经清空了链表，这里不能在清空链表2
+            int j = 4;
             for (int i = 0; i < 12; i++)  // Mode2-PWM1，Mode2-PWM2
             {
                 PARAMETER para = new PARAMETER();
@@ -3013,13 +3126,8 @@ namespace CTS
                 para.WAIT_AFTER = m_buffer[j++];
                 m_mode2_list.Add(para);
             }
-            //MessageBox.Show("收到第1帧");
-        }
 
-        private void ParseFrame2()
-        {
-            //解析frame1时，已经清空了链表，这里不能在清空链表2
-            int j = 4;
+            
             for (int i = 0; i < 6; i++)  // Mode2-PWM3
             {
                 PARAMETER para = new PARAMETER();
@@ -3030,6 +3138,7 @@ namespace CTS
                 para.FREQUENCE = m_buffer[j++];
                 para.DUTY_CYCLE = m_buffer[j++];
                 para.PERIOD = m_buffer[j++];
+                para.DWELL = m_buffer[j++];   //多了一个DWELL
                 para.NUM_OF_CYCLES = m_buffer[j++];
                 para.WAIT_BETWEEN = m_buffer[j++];
                 para.WAIT_AFTER = m_buffer[j++];
@@ -3041,6 +3150,45 @@ namespace CTS
                 m_mode3_list.Clear();
             }
 
+            //for (int i = 0; i < 12; i++)  // Mode3-PWM1,Mode3-PWM2
+            //{
+            //    PARAMETER para = new PARAMETER();
+            //    para.MODE_SELECTED = 0x00;
+            //    para.PWM_SERIAL_SELECTED = m_buffer[j++];
+            //    para.ENABLE = m_buffer[j++];
+            //    para.FREQUENCE = m_buffer[j++];
+            //    para.DUTY_CYCLE = m_buffer[j++];
+            //    para.PERIOD = m_buffer[j++];
+            //    para.NUM_OF_CYCLES = m_buffer[j++];
+            //    para.WAIT_BETWEEN = m_buffer[j++];
+            //    para.WAIT_AFTER = m_buffer[j++];
+            //    m_mode3_list.Add(para);
+            //}
+
+            //for (int i = 0; i < 6; i++)  // Mode3-PWM3
+            //{
+            //    PARAMETER para = new PARAMETER();
+            //    para.MODE_SELECTED = 0x00;
+            //    para.PWM_SERIAL_SELECTED = m_buffer[j++];
+            //    para.ENABLE = m_buffer[j++];
+            //    para.THRESHOLD = m_buffer[j++];   //多了一个THRESHOLD
+            //    para.FREQUENCE = m_buffer[j++];
+            //    para.DUTY_CYCLE = m_buffer[j++];
+            //    para.PERIOD = m_buffer[j++];
+            //    para.NUM_OF_CYCLES = m_buffer[j++];
+            //    para.WAIT_BETWEEN = m_buffer[j++];
+            //    para.WAIT_AFTER = m_buffer[j++];
+            //    m_mode3_list.Add(para);
+            //}
+            
+            //SetPWMParameterFromList(this.comboBox_modeSelect.SelectedIndex + 1);
+            
+            //SaveAllParameter2Files();
+        }
+
+        private void ParseFrame3()
+        {
+            int j = 4;
             for (int i = 0; i < 12; i++)  // Mode3-PWM1,Mode3-PWM2
             {
                 PARAMETER para = new PARAMETER();
@@ -3066,18 +3214,18 @@ namespace CTS
                 para.FREQUENCE = m_buffer[j++];
                 para.DUTY_CYCLE = m_buffer[j++];
                 para.PERIOD = m_buffer[j++];
+                para.DWELL = m_buffer[j++];   //多了一个DWELL
                 para.NUM_OF_CYCLES = m_buffer[j++];
                 para.WAIT_BETWEEN = m_buffer[j++];
                 para.WAIT_AFTER = m_buffer[j++];
                 m_mode3_list.Add(para);
             }
-            //m_bRcvParamtersCompleted = true;
-            //MessageBox.Show("收到第二帧");
-            //MessageBox.Show("读取完成");
+           
             SetPWMParameterFromList(this.comboBox_modeSelect.SelectedIndex + 1);
-            
+
             SaveAllParameter2Files();
         }
+        
 
         private void SaveAllParameter2Files()
         {
@@ -3092,6 +3240,7 @@ namespace CTS
                 bw.Write(parameter.FREQUENCE);
                 bw.Write(parameter.DUTY_CYCLE);
                 bw.Write(parameter.PERIOD);
+                bw.Write(parameter.DWELL);
                 bw.Write(parameter.NUM_OF_CYCLES);
                 bw.Write(parameter.WAIT_BETWEEN);
                 bw.Write(parameter.WAIT_AFTER);
@@ -3109,6 +3258,7 @@ namespace CTS
                 bw.Write(parameter.FREQUENCE);
                 bw.Write(parameter.DUTY_CYCLE);
                 bw.Write(parameter.PERIOD);
+                bw.Write(parameter.DWELL);
                 bw.Write(parameter.NUM_OF_CYCLES);
                 bw.Write(parameter.WAIT_BETWEEN);
                 bw.Write(parameter.WAIT_AFTER);
@@ -3126,6 +3276,7 @@ namespace CTS
                 bw.Write(parameter.FREQUENCE);
                 bw.Write(parameter.DUTY_CYCLE);
                 bw.Write(parameter.PERIOD);
+                bw.Write(parameter.DWELL);
                 bw.Write(parameter.NUM_OF_CYCLES);
                 bw.Write(parameter.WAIT_BETWEEN);
                 bw.Write(parameter.WAIT_AFTER);
@@ -3165,8 +3316,11 @@ namespace CTS
                  case 0x09:  //如果是参数数据帧1
                      ParseFrame1();
                      break;
-                 case 0x0A:  //如果是报警数据帧2
+                 case 0x0A:  //如果是参数数据帧2
                      ParseFrame2();
+                     break;
+                 case 0x0B: //如果是参数数据帧3
+                     ParseFrame3();
                      break;
                  default:
                      break;
@@ -3298,6 +3452,7 @@ namespace CTS
                     List<byte> list_freq = new List<byte>();
                     List<byte> list_dutyCycle = new List<byte>();
                     List<byte> list_period = new List<byte>();
+                    List<byte> list_dwell = new List<byte>();
                     List<byte> list_numOfCycles = new List<byte>();
                     List<byte> list_waitBetween = new List<byte>();
                     List<byte> list_waitAfter = new List<byte>();
@@ -3310,6 +3465,7 @@ namespace CTS
                         list_freq.Add(para.FREQUENCE);
                         list_dutyCycle.Add(para.DUTY_CYCLE);
                         list_period.Add(para.PERIOD);
+                        list_dwell.Add(para.DWELL);
                         list_numOfCycles.Add(para.NUM_OF_CYCLES);
                         list_waitBetween.Add(para.WAIT_BETWEEN);
                         list_waitAfter.Add(para.WAIT_AFTER);
@@ -3371,6 +3527,7 @@ namespace CTS
                     }
                     sw.WriteLine(tmpStr);
                     #endregion
+
 
                     //写freq
                     #region
@@ -3435,6 +3592,32 @@ namespace CTS
                     sw.WriteLine(tmpStr);
                     #endregion
 
+                    //写Dwell
+                    #region
+                    tmpStr = "";
+                    nIndex = 0;
+                    for (int j = -1; j <= 19; j++)
+                    {
+                        if (j == -1)
+                        {
+                            tmpStr = "Dwell (0-255sec)" + ",";
+                            continue;
+                        }
+                        if ((j >= 0 && j <= 5) || (j >= 7 && j <= 12))
+                        {
+                            tmpStr += @"/" + ",";
+                            nIndex++;
+                            continue;
+                        }
+                        if (j == 6 || j == 13)
+                        {
+                            tmpStr += " " + ",";
+                            continue;
+                        }
+                        tmpStr += Convert.ToString(list_dwell[nIndex++]) + ",";
+                    }
+                    sw.WriteLine(tmpStr);
+                    #endregion
                     //写Number of cycles
                     #region
                     tmpStr = "";
@@ -6622,6 +6805,7 @@ namespace CTS
                     bw.Write(parameter.FREQUENCE);
                     bw.Write(parameter.DUTY_CYCLE);
                     bw.Write(parameter.PERIOD);
+                    bw.Write(parameter.DWELL);
                     bw.Write(parameter.NUM_OF_CYCLES);
                     bw.Write(parameter.WAIT_BETWEEN);
                     bw.Write(parameter.WAIT_AFTER);
@@ -6635,6 +6819,7 @@ namespace CTS
                     bw.Write(parameter.FREQUENCE);
                     bw.Write(parameter.DUTY_CYCLE);
                     bw.Write(parameter.PERIOD);
+                    bw.Write(parameter.DWELL);
                     bw.Write(parameter.NUM_OF_CYCLES);
                     bw.Write(parameter.WAIT_BETWEEN);
                     bw.Write(parameter.WAIT_AFTER);
@@ -6648,6 +6833,7 @@ namespace CTS
                     bw.Write(parameter.FREQUENCE);
                     bw.Write(parameter.DUTY_CYCLE);
                     bw.Write(parameter.PERIOD);
+                    bw.Write(parameter.DWELL);
                     bw.Write(parameter.NUM_OF_CYCLES);
                     bw.Write(parameter.WAIT_BETWEEN);
                     bw.Write(parameter.WAIT_AFTER);
@@ -6700,9 +6886,9 @@ namespace CTS
                 //byte[] buffer=new byte[434];
                 //int len=br.Read(buffer, 0, 434);
 
-                byte[] buffer = new byte[434+18*3];
-                int len = br.Read(buffer, 0, 434 + 18 * 3);
-                if (len < 434 + 18 * 3)
+                byte[] buffer = new byte[434+36*3];
+                int len = br.Read(buffer, 0, 434 + 36 * 3);
+                if (len < 434 + 36 * 3)
                 {
                     MessageBox.Show("The file corrupt!");
                     return;
@@ -6720,7 +6906,7 @@ namespace CTS
                     m_mode3_list.Clear();
                     #region
                     int j = 0;
-                    for (int i = 0; i < 18*3; i++)
+                    for (int i = 0; i < 18 * 3; i++)
                     {
                         PARAMETER parameter = new PARAMETER();
 
@@ -6730,6 +6916,7 @@ namespace CTS
                         parameter.FREQUENCE = buffer[2 + j++];
                         parameter.DUTY_CYCLE = buffer[2 + j++];
                         parameter.PERIOD = buffer[2 + j++];
+                        parameter.DWELL = buffer[2 + j++];
                         parameter.NUM_OF_CYCLES = buffer[2 + j++];
                         parameter.WAIT_BETWEEN = buffer[2 + j++];
                         parameter.WAIT_AFTER = buffer[2 + j++];
@@ -6926,7 +7113,37 @@ namespace CTS
             string tmp = null;
             Int32 a = Convert.ToInt32(bt) / 16;
             Int32 b = Convert.ToInt32(bt) % 16;
-            tmp += Convert.ToString(a);
+
+            if (a == 10)
+            {
+                tmp += "A";
+            }
+            else if (a == 11)
+            {
+                tmp += "B";
+            }
+            else if (a == 12)
+            {
+                tmp += "C";
+            }
+            else if (a == 13)
+            {
+                tmp += "D";
+            }
+            else if (a == 14)
+            {
+                tmp += "E";
+            }
+            else if (a == 15)
+            {
+                tmp += "F";
+            }
+            else
+            {
+                tmp += Convert.ToString(a);
+            }
+
+            //tmp += Convert.ToString(a);
             if (b == 10)
             {
                 tmp += "A";
@@ -7009,9 +7226,10 @@ namespace CTS
                     sum += Convert.ToUInt32(para.WAIT_BETWEEN);
                     sum += Convert.ToUInt32(para.WAIT_AFTER);
 
-                    if (cnt >= 12 && cnt <= 17)
+                    if (cnt >= 12 && cnt <= 17)  //PWM3
                     {
                         sum += Convert.ToUInt32(para.THRESHOLD);
+                        sum += Convert.ToUInt32(para.DWELL);
 
                         str += "0x" + ConBverInt2Hex(Convert.ToByte(para.PWM_SERIAL_SELECTED)) + "," +
                             Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
@@ -7019,6 +7237,7 @@ namespace CTS
                             Convert.ToString(Convert.ToByte(para.FREQUENCE)) + "," +
                             Convert.ToString(Convert.ToByte(para.DUTY_CYCLE)) + "," +
                             Convert.ToString(Convert.ToByte(para.PERIOD)) + "," +
+                            Convert.ToString(Convert.ToByte(para.DWELL)) + "," +
                             Convert.ToString(Convert.ToByte(para.NUM_OF_CYCLES)) + "," +
                             Convert.ToString(Convert.ToByte(para.WAIT_BETWEEN)) + "," +
                             Convert.ToString(Convert.ToByte(para.WAIT_AFTER)) + "," + "\n";
@@ -7058,6 +7277,7 @@ namespace CTS
                     if (cnt >= 12 && cnt <= 17)
                     {
                         sum += Convert.ToUInt32(para.THRESHOLD);
+                        sum += Convert.ToUInt32(para.DWELL);
 
                         str += "0x" + ConBverInt2Hex(Convert.ToByte(para.PWM_SERIAL_SELECTED)) + "," +
                             Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
@@ -7065,6 +7285,7 @@ namespace CTS
                             Convert.ToString(Convert.ToByte(para.FREQUENCE)) + "," +
                             Convert.ToString(Convert.ToByte(para.DUTY_CYCLE)) + "," +
                             Convert.ToString(Convert.ToByte(para.PERIOD)) + "," +
+                            Convert.ToString(Convert.ToByte(para.DWELL)) + "," +
                             Convert.ToString(Convert.ToByte(para.NUM_OF_CYCLES)) + "," +
                             Convert.ToString(Convert.ToByte(para.WAIT_BETWEEN)) + "," +
                             Convert.ToString(Convert.ToByte(para.WAIT_AFTER)) + "," + "\n";
@@ -7103,6 +7324,7 @@ namespace CTS
                     if (cnt >= 12 && cnt <= 17)
                     {
                         sum += Convert.ToUInt32(para.THRESHOLD);
+                        sum += Convert.ToUInt32(para.DWELL);
 
                         str += "0x" + ConBverInt2Hex(Convert.ToByte(para.PWM_SERIAL_SELECTED)) + "," +
                             Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
@@ -7110,6 +7332,7 @@ namespace CTS
                             Convert.ToString(Convert.ToByte(para.FREQUENCE)) + "," +
                             Convert.ToString(Convert.ToByte(para.DUTY_CYCLE)) + "," +
                             Convert.ToString(Convert.ToByte(para.PERIOD)) + "," +
+                            Convert.ToString(Convert.ToByte(para.DWELL)) + "," +
                             Convert.ToString(Convert.ToByte(para.NUM_OF_CYCLES)) + "," +
                             Convert.ToString(Convert.ToByte(para.WAIT_BETWEEN)) + "," +
                             Convert.ToString(Convert.ToByte(para.WAIT_AFTER)) + "," + "\n";
@@ -7144,6 +7367,162 @@ namespace CTS
             else
             {
 
+            }
+        }
+
+        private void textBox_dwell_1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == 8))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void textBox_dwell_2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == 8))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void textBox_dwell_3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == 8))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void textBox_dwell_4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == 8))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void textBox_dwell_5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == 8))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void textBox_dwell_6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (e.KeyChar == 8))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void textBox_dwell_1_TextChanged(object sender, EventArgs e)
+        {
+            if (m_mode1_list.Count == 0 || m_mode2_list.Count == 0 || m_mode3_list.Count == 0 || ((TextBox)sender).Text == "")
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(((TextBox)sender).Text) < 0 || Convert.ToInt32(((TextBox)sender).Text) > 255)
+            {
+                MessageBox.Show("Out of range,please input again!");
+                ((TextBox)sender).Text = "";
+            }
+        }
+
+        private void textBox_dwell_2_TextChanged(object sender, EventArgs e)
+        {
+            if (m_mode1_list.Count == 0 || m_mode2_list.Count == 0 || m_mode3_list.Count == 0 || ((TextBox)sender).Text == "")
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(((TextBox)sender).Text) < 0 || Convert.ToInt32(((TextBox)sender).Text) > 255)
+            {
+                MessageBox.Show("Out of range,please input again!");
+                ((TextBox)sender).Text = "";
+            }
+        }
+
+        private void textBox_dwell_3_TextChanged(object sender, EventArgs e)
+        {
+            if (m_mode1_list.Count == 0 || m_mode2_list.Count == 0 || m_mode3_list.Count == 0 || ((TextBox)sender).Text == "")
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(((TextBox)sender).Text) < 0 || Convert.ToInt32(((TextBox)sender).Text) > 255)
+            {
+                MessageBox.Show("Out of range,please input again!");
+                ((TextBox)sender).Text = "";
+            }
+        }
+
+        private void textBox_dwell_4_TextChanged(object sender, EventArgs e)
+        {
+            if (m_mode1_list.Count == 0 || m_mode2_list.Count == 0 || m_mode3_list.Count == 0 || ((TextBox)sender).Text == "")
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(((TextBox)sender).Text) < 0 || Convert.ToInt32(((TextBox)sender).Text) > 255)
+            {
+                MessageBox.Show("Out of range,please input again!");
+                ((TextBox)sender).Text = "";
+            }
+        }
+
+        private void textBox_dwell_5_TextChanged(object sender, EventArgs e)
+        {
+            if (m_mode1_list.Count == 0 || m_mode2_list.Count == 0 || m_mode3_list.Count == 0 || ((TextBox)sender).Text == "")
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(((TextBox)sender).Text) < 0 || Convert.ToInt32(((TextBox)sender).Text) > 255)
+            {
+                MessageBox.Show("Out of range,please input again!");
+                ((TextBox)sender).Text = "";
+            }
+        }
+
+        private void textBox_dwell_6_TextChanged(object sender, EventArgs e)
+        {
+            if (m_mode1_list.Count == 0 || m_mode2_list.Count == 0 || m_mode3_list.Count == 0 || ((TextBox)sender).Text == "")
+            {
+                return;
+            }
+
+            if (Convert.ToInt32(((TextBox)sender).Text) < 0 || Convert.ToInt32(((TextBox)sender).Text) > 255)
+            {
+                MessageBox.Show("Out of range,please input again!");
+                ((TextBox)sender).Text = "";
             }
         }
 

@@ -58,6 +58,12 @@
             this.button_save = new System.Windows.Forms.Button();
             this.textBox_paraCfgFilePath = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox_dwell_6 = new System.Windows.Forms.TextBox();
+            this.textBox_dwell_5 = new System.Windows.Forms.TextBox();
+            this.textBox_dwell_4 = new System.Windows.Forms.TextBox();
+            this.textBox_dwell_3 = new System.Windows.Forms.TextBox();
+            this.textBox_dwell_2 = new System.Windows.Forms.TextBox();
+            this.textBox_dwell_1 = new System.Windows.Forms.TextBox();
             this.textBox_threshold_PWM3_serial6 = new System.Windows.Forms.TextBox();
             this.textBox_threshold_PWM3_serial5 = new System.Windows.Forms.TextBox();
             this.textBox_threshold_PWM3_serial4 = new System.Windows.Forms.TextBox();
@@ -223,6 +229,8 @@
             this.textBox_dutyCycle_PWM1_serial1 = new System.Windows.Forms.TextBox();
             this.textBox_freq_PWM1_serial1 = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -251,12 +259,12 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.软件版本ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportTxtFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.exportTxtFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -526,7 +534,7 @@
             this.groupBox4.Controls.Add(this.textBox_paraCfgFilePath);
             this.groupBox4.Location = new System.Drawing.Point(0, 55);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1377, 82);
+            this.groupBox4.Size = new System.Drawing.Size(1931, 82);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Files";
@@ -560,6 +568,12 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.textBox_dwell_6);
+            this.groupBox7.Controls.Add(this.textBox_dwell_5);
+            this.groupBox7.Controls.Add(this.textBox_dwell_4);
+            this.groupBox7.Controls.Add(this.textBox_dwell_3);
+            this.groupBox7.Controls.Add(this.textBox_dwell_2);
+            this.groupBox7.Controls.Add(this.textBox_dwell_1);
             this.groupBox7.Controls.Add(this.textBox_threshold_PWM3_serial6);
             this.groupBox7.Controls.Add(this.textBox_threshold_PWM3_serial5);
             this.groupBox7.Controls.Add(this.textBox_threshold_PWM3_serial4);
@@ -620,6 +634,66 @@
             this.groupBox7.TabIndex = 55;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "PWM3";
+            // 
+            // textBox_dwell_6
+            // 
+            this.textBox_dwell_6.Location = new System.Drawing.Point(261, 243);
+            this.textBox_dwell_6.MaxLength = 3;
+            this.textBox_dwell_6.Name = "textBox_dwell_6";
+            this.textBox_dwell_6.Size = new System.Drawing.Size(34, 21);
+            this.textBox_dwell_6.TabIndex = 65;
+            this.textBox_dwell_6.TextChanged += new System.EventHandler(this.textBox_dwell_6_TextChanged);
+            this.textBox_dwell_6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_dwell_6_KeyPress);
+            // 
+            // textBox_dwell_5
+            // 
+            this.textBox_dwell_5.Location = new System.Drawing.Point(208, 243);
+            this.textBox_dwell_5.MaxLength = 3;
+            this.textBox_dwell_5.Name = "textBox_dwell_5";
+            this.textBox_dwell_5.Size = new System.Drawing.Size(34, 21);
+            this.textBox_dwell_5.TabIndex = 64;
+            this.textBox_dwell_5.TextChanged += new System.EventHandler(this.textBox_dwell_5_TextChanged);
+            this.textBox_dwell_5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_dwell_5_KeyPress);
+            // 
+            // textBox_dwell_4
+            // 
+            this.textBox_dwell_4.Location = new System.Drawing.Point(158, 243);
+            this.textBox_dwell_4.MaxLength = 3;
+            this.textBox_dwell_4.Name = "textBox_dwell_4";
+            this.textBox_dwell_4.Size = new System.Drawing.Size(34, 21);
+            this.textBox_dwell_4.TabIndex = 63;
+            this.textBox_dwell_4.TextChanged += new System.EventHandler(this.textBox_dwell_4_TextChanged);
+            this.textBox_dwell_4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_dwell_4_KeyPress);
+            // 
+            // textBox_dwell_3
+            // 
+            this.textBox_dwell_3.Location = new System.Drawing.Point(106, 243);
+            this.textBox_dwell_3.MaxLength = 3;
+            this.textBox_dwell_3.Name = "textBox_dwell_3";
+            this.textBox_dwell_3.Size = new System.Drawing.Size(34, 21);
+            this.textBox_dwell_3.TabIndex = 62;
+            this.textBox_dwell_3.TextChanged += new System.EventHandler(this.textBox_dwell_3_TextChanged);
+            this.textBox_dwell_3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_dwell_3_KeyPress);
+            // 
+            // textBox_dwell_2
+            // 
+            this.textBox_dwell_2.Location = new System.Drawing.Point(55, 243);
+            this.textBox_dwell_2.MaxLength = 3;
+            this.textBox_dwell_2.Name = "textBox_dwell_2";
+            this.textBox_dwell_2.Size = new System.Drawing.Size(34, 21);
+            this.textBox_dwell_2.TabIndex = 61;
+            this.textBox_dwell_2.TextChanged += new System.EventHandler(this.textBox_dwell_2_TextChanged);
+            this.textBox_dwell_2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_dwell_2_KeyPress);
+            // 
+            // textBox_dwell_1
+            // 
+            this.textBox_dwell_1.Location = new System.Drawing.Point(11, 243);
+            this.textBox_dwell_1.MaxLength = 3;
+            this.textBox_dwell_1.Name = "textBox_dwell_1";
+            this.textBox_dwell_1.Size = new System.Drawing.Size(34, 21);
+            this.textBox_dwell_1.TabIndex = 60;
+            this.textBox_dwell_1.TextChanged += new System.EventHandler(this.textBox_dwell_1_TextChanged);
+            this.textBox_dwell_1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_dwell_1_KeyPress);
             // 
             // textBox_threshold_PWM3_serial6
             // 
@@ -723,7 +797,7 @@
             // 
             // textBox_period_PWM3_serial6
             // 
-            this.textBox_period_PWM3_serial6.Location = new System.Drawing.Point(261, 229);
+            this.textBox_period_PWM3_serial6.Location = new System.Drawing.Point(261, 222);
             this.textBox_period_PWM3_serial6.MaxLength = 3;
             this.textBox_period_PWM3_serial6.Name = "textBox_period_PWM3_serial6";
             this.textBox_period_PWM3_serial6.Size = new System.Drawing.Size(34, 21);
@@ -793,7 +867,7 @@
             // 
             // textBox_period_PWM3_serial5
             // 
-            this.textBox_period_PWM3_serial5.Location = new System.Drawing.Point(208, 229);
+            this.textBox_period_PWM3_serial5.Location = new System.Drawing.Point(208, 222);
             this.textBox_period_PWM3_serial5.MaxLength = 3;
             this.textBox_period_PWM3_serial5.Name = "textBox_period_PWM3_serial5";
             this.textBox_period_PWM3_serial5.Size = new System.Drawing.Size(34, 21);
@@ -863,7 +937,7 @@
             // 
             // textBox_period_PWM3_serial4
             // 
-            this.textBox_period_PWM3_serial4.Location = new System.Drawing.Point(158, 229);
+            this.textBox_period_PWM3_serial4.Location = new System.Drawing.Point(158, 222);
             this.textBox_period_PWM3_serial4.MaxLength = 3;
             this.textBox_period_PWM3_serial4.Name = "textBox_period_PWM3_serial4";
             this.textBox_period_PWM3_serial4.Size = new System.Drawing.Size(34, 21);
@@ -933,7 +1007,7 @@
             // 
             // textBox_period_PWM3_serial3
             // 
-            this.textBox_period_PWM3_serial3.Location = new System.Drawing.Point(106, 229);
+            this.textBox_period_PWM3_serial3.Location = new System.Drawing.Point(106, 222);
             this.textBox_period_PWM3_serial3.MaxLength = 3;
             this.textBox_period_PWM3_serial3.Name = "textBox_period_PWM3_serial3";
             this.textBox_period_PWM3_serial3.Size = new System.Drawing.Size(34, 21);
@@ -1003,7 +1077,7 @@
             // 
             // textBox_period_PWM3_serial2
             // 
-            this.textBox_period_PWM3_serial2.Location = new System.Drawing.Point(55, 229);
+            this.textBox_period_PWM3_serial2.Location = new System.Drawing.Point(55, 222);
             this.textBox_period_PWM3_serial2.MaxLength = 3;
             this.textBox_period_PWM3_serial2.Name = "textBox_period_PWM3_serial2";
             this.textBox_period_PWM3_serial2.Size = new System.Drawing.Size(34, 21);
@@ -1118,7 +1192,7 @@
             // 
             // textBox_period_PWM3_serial1
             // 
-            this.textBox_period_PWM3_serial1.Location = new System.Drawing.Point(11, 229);
+            this.textBox_period_PWM3_serial1.Location = new System.Drawing.Point(11, 222);
             this.textBox_period_PWM3_serial1.MaxLength = 3;
             this.textBox_period_PWM3_serial1.Name = "textBox_period_PWM3_serial1";
             this.textBox_period_PWM3_serial1.Size = new System.Drawing.Size(34, 21);
@@ -1320,7 +1394,7 @@
             // 
             // textBox_period_PWM2_serial6
             // 
-            this.textBox_period_PWM2_serial6.Location = new System.Drawing.Point(261, 229);
+            this.textBox_period_PWM2_serial6.Location = new System.Drawing.Point(261, 222);
             this.textBox_period_PWM2_serial6.MaxLength = 3;
             this.textBox_period_PWM2_serial6.Name = "textBox_period_PWM2_serial6";
             this.textBox_period_PWM2_serial6.Size = new System.Drawing.Size(34, 21);
@@ -1390,7 +1464,7 @@
             // 
             // textBox_period_PWM2_serial5
             // 
-            this.textBox_period_PWM2_serial5.Location = new System.Drawing.Point(208, 229);
+            this.textBox_period_PWM2_serial5.Location = new System.Drawing.Point(208, 222);
             this.textBox_period_PWM2_serial5.MaxLength = 3;
             this.textBox_period_PWM2_serial5.Name = "textBox_period_PWM2_serial5";
             this.textBox_period_PWM2_serial5.Size = new System.Drawing.Size(34, 21);
@@ -1460,7 +1534,7 @@
             // 
             // textBox_period_PWM2_serial4
             // 
-            this.textBox_period_PWM2_serial4.Location = new System.Drawing.Point(158, 229);
+            this.textBox_period_PWM2_serial4.Location = new System.Drawing.Point(158, 222);
             this.textBox_period_PWM2_serial4.MaxLength = 3;
             this.textBox_period_PWM2_serial4.Name = "textBox_period_PWM2_serial4";
             this.textBox_period_PWM2_serial4.Size = new System.Drawing.Size(34, 21);
@@ -1530,7 +1604,7 @@
             // 
             // textBox_period_PWM2_serial3
             // 
-            this.textBox_period_PWM2_serial3.Location = new System.Drawing.Point(106, 229);
+            this.textBox_period_PWM2_serial3.Location = new System.Drawing.Point(106, 222);
             this.textBox_period_PWM2_serial3.MaxLength = 3;
             this.textBox_period_PWM2_serial3.Name = "textBox_period_PWM2_serial3";
             this.textBox_period_PWM2_serial3.Size = new System.Drawing.Size(34, 21);
@@ -1600,7 +1674,7 @@
             // 
             // textBox_period_PWM2_serial2
             // 
-            this.textBox_period_PWM2_serial2.Location = new System.Drawing.Point(55, 229);
+            this.textBox_period_PWM2_serial2.Location = new System.Drawing.Point(55, 222);
             this.textBox_period_PWM2_serial2.MaxLength = 3;
             this.textBox_period_PWM2_serial2.Name = "textBox_period_PWM2_serial2";
             this.textBox_period_PWM2_serial2.Size = new System.Drawing.Size(34, 21);
@@ -1715,7 +1789,7 @@
             // 
             // textBox_period_PWM2_serial1
             // 
-            this.textBox_period_PWM2_serial1.Location = new System.Drawing.Point(11, 229);
+            this.textBox_period_PWM2_serial1.Location = new System.Drawing.Point(11, 222);
             this.textBox_period_PWM2_serial1.MaxLength = 3;
             this.textBox_period_PWM2_serial1.Name = "textBox_period_PWM2_serial1";
             this.textBox_period_PWM2_serial1.Size = new System.Drawing.Size(34, 21);
@@ -1918,7 +1992,7 @@
             // 
             // textBox_period_PWM1_serial6
             // 
-            this.textBox_period_PWM1_serial6.Location = new System.Drawing.Point(261, 229);
+            this.textBox_period_PWM1_serial6.Location = new System.Drawing.Point(261, 222);
             this.textBox_period_PWM1_serial6.MaxLength = 3;
             this.textBox_period_PWM1_serial6.Name = "textBox_period_PWM1_serial6";
             this.textBox_period_PWM1_serial6.Size = new System.Drawing.Size(34, 21);
@@ -1988,7 +2062,7 @@
             // 
             // textBox_period_PWM1_serial5
             // 
-            this.textBox_period_PWM1_serial5.Location = new System.Drawing.Point(208, 229);
+            this.textBox_period_PWM1_serial5.Location = new System.Drawing.Point(208, 222);
             this.textBox_period_PWM1_serial5.MaxLength = 3;
             this.textBox_period_PWM1_serial5.Name = "textBox_period_PWM1_serial5";
             this.textBox_period_PWM1_serial5.Size = new System.Drawing.Size(34, 21);
@@ -2058,7 +2132,7 @@
             // 
             // textBox_period_PWM1_serial4
             // 
-            this.textBox_period_PWM1_serial4.Location = new System.Drawing.Point(158, 229);
+            this.textBox_period_PWM1_serial4.Location = new System.Drawing.Point(158, 222);
             this.textBox_period_PWM1_serial4.MaxLength = 3;
             this.textBox_period_PWM1_serial4.Name = "textBox_period_PWM1_serial4";
             this.textBox_period_PWM1_serial4.Size = new System.Drawing.Size(34, 21);
@@ -2128,7 +2202,7 @@
             // 
             // textBox_period_PWM1_serial3
             // 
-            this.textBox_period_PWM1_serial3.Location = new System.Drawing.Point(106, 229);
+            this.textBox_period_PWM1_serial3.Location = new System.Drawing.Point(106, 222);
             this.textBox_period_PWM1_serial3.MaxLength = 3;
             this.textBox_period_PWM1_serial3.Name = "textBox_period_PWM1_serial3";
             this.textBox_period_PWM1_serial3.Size = new System.Drawing.Size(34, 21);
@@ -2198,7 +2272,7 @@
             // 
             // textBox_period_PWM1_serial2
             // 
-            this.textBox_period_PWM1_serial2.Location = new System.Drawing.Point(55, 229);
+            this.textBox_period_PWM1_serial2.Location = new System.Drawing.Point(55, 222);
             this.textBox_period_PWM1_serial2.MaxLength = 3;
             this.textBox_period_PWM1_serial2.Name = "textBox_period_PWM1_serial2";
             this.textBox_period_PWM1_serial2.Size = new System.Drawing.Size(34, 21);
@@ -2313,7 +2387,7 @@
             // 
             // textBox_period_PWM1_serial1
             // 
-            this.textBox_period_PWM1_serial1.Location = new System.Drawing.Point(11, 229);
+            this.textBox_period_PWM1_serial1.Location = new System.Drawing.Point(11, 222);
             this.textBox_period_PWM1_serial1.MaxLength = 3;
             this.textBox_period_PWM1_serial1.Name = "textBox_period_PWM1_serial1";
             this.textBox_period_PWM1_serial1.Size = new System.Drawing.Size(34, 21);
@@ -2352,6 +2426,8 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.label27);
+            this.panel5.Controls.Add(this.label26);
             this.panel5.Controls.Add(this.label25);
             this.panel5.Controls.Add(this.label24);
             this.panel5.Controls.Add(this.label20);
@@ -2371,6 +2447,25 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(138, 419);
             this.panel5.TabIndex = 40;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(62, 246);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(71, 12);
+            this.label27.TabIndex = 16;
+            this.label27.Text = "[0-255 Sec]";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label26.Location = new System.Drawing.Point(10, 246);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(40, 12);
+            this.label26.TabIndex = 15;
+            this.label26.Text = "Dwell";
             // 
             // label25
             // 
@@ -2422,7 +2517,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(11, 248);
+            this.label17.Location = new System.Drawing.Point(61, 222);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(71, 12);
             this.label17.TabIndex = 9;
@@ -2491,7 +2586,7 @@
             // 
             this.label62.AutoSize = true;
             this.label62.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label62.Location = new System.Drawing.Point(9, 231);
+            this.label62.Location = new System.Drawing.Point(9, 222);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(54, 12);
             this.label62.TabIndex = 2;
@@ -2629,6 +2724,13 @@
             this.软件版本ToolStripMenuItem.Text = "Software Ver.";
             this.软件版本ToolStripMenuItem.Click += new System.EventHandler(this.软件版本ToolStripMenuItem_Click);
             // 
+            // exportTxtFileToolStripMenuItem
+            // 
+            this.exportTxtFileToolStripMenuItem.Name = "exportTxtFileToolStripMenuItem";
+            this.exportTxtFileToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.exportTxtFileToolStripMenuItem.Text = "export txt file";
+            this.exportTxtFileToolStripMenuItem.Click += new System.EventHandler(this.exportTxtFileToolStripMenuItem_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2664,13 +2766,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Parameter File(*.cts_cfg)|*.cts_cfg|All Files(*.*)|*.*";
-            // 
-            // exportTxtFileToolStripMenuItem
-            // 
-            this.exportTxtFileToolStripMenuItem.Name = "exportTxtFileToolStripMenuItem";
-            this.exportTxtFileToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.exportTxtFileToolStripMenuItem.Text = "export txt file";
-            this.exportTxtFileToolStripMenuItem.Click += new System.EventHandler(this.exportTxtFileToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -2944,6 +3039,14 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.ToolStripMenuItem exportTxtFileToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox_dwell_6;
+        private System.Windows.Forms.TextBox textBox_dwell_5;
+        private System.Windows.Forms.TextBox textBox_dwell_4;
+        private System.Windows.Forms.TextBox textBox_dwell_3;
+        private System.Windows.Forms.TextBox textBox_dwell_2;
+        private System.Windows.Forms.TextBox textBox_dwell_1;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
     }
 }
 
