@@ -3080,26 +3080,7 @@ namespace CTS
                 m_mode1_list.Add(para);
             }
 
-            //if (m_mode2_list.Count != 0)
-            //{
-            //    m_mode2_list.Clear();
-            //}
 
-            //for (int i = 0; i < 12; i++)  // Mode2-PWM1，Mode2-PWM2
-            //{
-            //    PARAMETER para = new PARAMETER();
-            //    para.MODE_SELECTED = 0x00;
-            //    para.PWM_SERIAL_SELECTED = m_buffer[j++];
-            //    para.ENABLE = m_buffer[j++];
-            //    para.FREQUENCE = m_buffer[j++];
-            //    para.DUTY_CYCLE = m_buffer[j++];
-            //    para.PERIOD = m_buffer[j++];
-            //    para.NUM_OF_CYCLES = m_buffer[j++];
-            //    para.WAIT_BETWEEN = m_buffer[j++];
-            //    para.WAIT_AFTER = m_buffer[j++];
-            //    m_mode2_list.Add(para);
-            //}
-            //MessageBox.Show("收到第1帧");
         }
 
         private void ParseFrame2()
@@ -4401,7 +4382,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5300,7 +5281,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5324,7 +5305,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5347,7 +5328,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5370,7 +5351,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5393,7 +5374,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5416,7 +5397,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5439,7 +5420,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5462,7 +5443,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5485,7 +5466,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5508,7 +5489,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5531,7 +5512,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5554,7 +5535,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5577,7 +5558,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5600,7 +5581,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5623,7 +5604,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5646,7 +5627,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5669,7 +5650,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 99)
+                if (num < 5 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -7232,8 +7213,8 @@ namespace CTS
                         sum += Convert.ToUInt32(para.DWELL);
 
                         str += "0x" + ConBverInt2Hex(Convert.ToByte(para.PWM_SERIAL_SELECTED)) + "," +
-                            Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
                             Convert.ToString(Convert.ToByte(para.ENABLE)) + "," +
+                            Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
                             Convert.ToString(Convert.ToByte(para.FREQUENCE)) + "," +
                             Convert.ToString(Convert.ToByte(para.DUTY_CYCLE)) + "," +
                             Convert.ToString(Convert.ToByte(para.PERIOD)) + "," +
@@ -7280,8 +7261,8 @@ namespace CTS
                         sum += Convert.ToUInt32(para.DWELL);
 
                         str += "0x" + ConBverInt2Hex(Convert.ToByte(para.PWM_SERIAL_SELECTED)) + "," +
-                            Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
                             Convert.ToString(Convert.ToByte(para.ENABLE)) + "," +
+                            Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
                             Convert.ToString(Convert.ToByte(para.FREQUENCE)) + "," +
                             Convert.ToString(Convert.ToByte(para.DUTY_CYCLE)) + "," +
                             Convert.ToString(Convert.ToByte(para.PERIOD)) + "," +
@@ -7327,8 +7308,8 @@ namespace CTS
                         sum += Convert.ToUInt32(para.DWELL);
 
                         str += "0x" + ConBverInt2Hex(Convert.ToByte(para.PWM_SERIAL_SELECTED)) + "," +
-                            Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
                             Convert.ToString(Convert.ToByte(para.ENABLE)) + "," +
+                            Convert.ToString(Convert.ToByte(para.THRESHOLD)) + "," +
                             Convert.ToString(Convert.ToByte(para.FREQUENCE)) + "," +
                             Convert.ToString(Convert.ToByte(para.DUTY_CYCLE)) + "," +
                             Convert.ToString(Convert.ToByte(para.PERIOD)) + "," +
@@ -7524,6 +7505,31 @@ namespace CTS
                 MessageBox.Show("Out of range,please input again!");
                 ((TextBox)sender).Text = "";
             }
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //复位上位机
+           // if (File.Exists(m_mode1_cfgFilePath) && File.Exists(m_mode2_cfgFilePath) && File.Exists(m_mode3_cfgFilePath))
+            if (File.Exists(m_commPara_cfgFilePath))
+            {
+                File.Delete(m_commPara_cfgFilePath);
+            }
+            if (File.Exists(m_mode1_cfgFilePath))
+            {
+                File.Delete(m_mode1_cfgFilePath);
+            }
+            if (File.Exists(m_mode2_cfgFilePath))
+            {
+                File.Delete(m_mode2_cfgFilePath);
+            }
+            if (File.Exists(m_mode3_cfgFilePath))
+            {
+                File.Delete(m_mode3_cfgFilePath);
+            }
+
+            InitCommParameter();
+            InitPWMSet();
         }
 
       

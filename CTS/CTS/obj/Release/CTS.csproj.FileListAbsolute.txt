@@ -16,4 +16,3 @@ D:\VS_Practice\CTS\CTS\obj\Release\CTS.Properties.Resources.resources
 D:\VS_Practice\CTS\CTS\obj\Release\CTS.csproj.GenerateResource.Cache
 D:\VS_Practice\CTS\CTS\obj\Release\CTS.exe
 D:\VS_Practice\CTS\CTS\obj\Release\CTS.pdb
-D:\VS_Practice\CTS\CTS\obj\Release\CTS.csprojResolveAssemblyReference.cache
