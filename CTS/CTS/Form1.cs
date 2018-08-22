@@ -116,6 +116,13 @@ namespace CTS
             this.textBox_threshold_PWM3_serial5.Text = "1";
             this.textBox_threshold_PWM3_serial6.Text = "1";
 
+            this.textBox_threshold_PWM3_serial1.Enabled = true;
+            this.textBox_threshold_PWM3_serial2.Enabled = true;
+            this.textBox_threshold_PWM3_serial3.Enabled = true;
+            this.textBox_threshold_PWM3_serial4.Enabled = true;
+            this.textBox_threshold_PWM3_serial5.Enabled = true;
+            this.textBox_threshold_PWM3_serial6.Enabled = true;
+
             #endregion
 
             #region
@@ -125,6 +132,13 @@ namespace CTS
             this.textBox_dwell_4.Text = "6";
             this.textBox_dwell_5.Text = "6";
             this.textBox_dwell_6.Text = "6";
+
+            this.textBox_dwell_1.Enabled = true;
+            this.textBox_dwell_2.Enabled = true;
+            this.textBox_dwell_3.Enabled = true;
+            this.textBox_dwell_4.Enabled = true;
+            this.textBox_dwell_5.Enabled = true;
+            this.textBox_dwell_6.Enabled = true;
             #endregion
 
             //频率默认1Hz，范围为：[1,255Hz]
@@ -147,6 +161,25 @@ namespace CTS
             this.textBox_freq_PWM3_serial4.Text = "1";
             this.textBox_freq_PWM3_serial5.Text = "1";
             this.textBox_freq_PWM3_serial6.Text = "1";
+
+            this.textBox_freq_PWM1_serial1.Enabled = true;
+            this.textBox_freq_PWM1_serial2.Enabled = true;
+            this.textBox_freq_PWM1_serial3.Enabled = true;
+            this.textBox_freq_PWM1_serial4.Enabled = true;
+            this.textBox_freq_PWM1_serial5.Enabled = true;
+            this.textBox_freq_PWM1_serial6.Enabled = true;
+            this.textBox_freq_PWM2_serial1.Enabled = true;
+            this.textBox_freq_PWM2_serial2.Enabled = true;
+            this.textBox_freq_PWM2_serial3.Enabled = true;
+            this.textBox_freq_PWM2_serial4.Enabled = true;
+            this.textBox_freq_PWM2_serial5.Enabled = true;
+            this.textBox_freq_PWM2_serial6.Enabled = true;
+            this.textBox_freq_PWM3_serial1.Enabled = true;
+            this.textBox_freq_PWM3_serial2.Enabled = true;
+            this.textBox_freq_PWM3_serial3.Enabled = true;
+            this.textBox_freq_PWM3_serial4.Enabled = true;
+            this.textBox_freq_PWM3_serial5.Enabled = true;
+            this.textBox_freq_PWM3_serial6.Enabled = true;
             #endregion
 
             //dutyCycle默认为10%，范围为：[10%,90%]
@@ -169,6 +202,25 @@ namespace CTS
             this.textBox_dutyCycle_PWM3_serial4.Text = "10";
             this.textBox_dutyCycle_PWM3_serial5.Text = "10";
             this.textBox_dutyCycle_PWM3_serial6.Text = "10";
+
+            this.textBox_dutyCycle_PWM1_serial1.Enabled = true;
+            this.textBox_dutyCycle_PWM1_serial2.Enabled = true;
+            this.textBox_dutyCycle_PWM1_serial3.Enabled = true;
+            this.textBox_dutyCycle_PWM1_serial4.Enabled = true;
+            this.textBox_dutyCycle_PWM1_serial5.Enabled = true;
+            this.textBox_dutyCycle_PWM1_serial6.Enabled = true;
+            this.textBox_dutyCycle_PWM2_serial1.Enabled = true;
+            this.textBox_dutyCycle_PWM2_serial2.Enabled = true;
+            this.textBox_dutyCycle_PWM2_serial3.Enabled = true;
+            this.textBox_dutyCycle_PWM2_serial4.Enabled = true;
+            this.textBox_dutyCycle_PWM2_serial5.Enabled = true;
+            this.textBox_dutyCycle_PWM2_serial6.Enabled = true;
+            this.textBox_dutyCycle_PWM3_serial1.Enabled = true;
+            this.textBox_dutyCycle_PWM3_serial2.Enabled = true;
+            this.textBox_dutyCycle_PWM3_serial3.Enabled = true;
+            this.textBox_dutyCycle_PWM3_serial4.Enabled = true;
+            this.textBox_dutyCycle_PWM3_serial5.Enabled = true;
+            this.textBox_dutyCycle_PWM3_serial6.Enabled = true;
             #endregion
 
             //period默认为1，范围为：[1,255s]
@@ -191,6 +243,25 @@ namespace CTS
             this.textBox_period_PWM3_serial4.Text = "1";
             this.textBox_period_PWM3_serial5.Text = "1";
             this.textBox_period_PWM3_serial6.Text = "1";
+
+            this.textBox_period_PWM1_serial1.Enabled = true;
+            this.textBox_period_PWM1_serial2.Enabled = true;
+            this.textBox_period_PWM1_serial3.Enabled = true;
+            this.textBox_period_PWM1_serial4.Enabled = true;
+            this.textBox_period_PWM1_serial5.Enabled = true;
+            this.textBox_period_PWM1_serial6.Enabled = true;
+            this.textBox_period_PWM2_serial1.Enabled = true;
+            this.textBox_period_PWM2_serial2.Enabled = true;
+            this.textBox_period_PWM2_serial3.Enabled = true;
+            this.textBox_period_PWM2_serial4.Enabled = true;
+            this.textBox_period_PWM2_serial5.Enabled = true;
+            this.textBox_period_PWM2_serial6.Enabled = true;
+            this.textBox_period_PWM3_serial1.Enabled = true;
+            this.textBox_period_PWM3_serial2.Enabled = true;
+            this.textBox_period_PWM3_serial3.Enabled = true;
+            this.textBox_period_PWM3_serial4.Enabled = true;
+            this.textBox_period_PWM3_serial5.Enabled = true;
+            this.textBox_period_PWM3_serial6.Enabled = true;
             #endregion
 
             //Number of Cycle 默认为1，范围为：[1,250]
@@ -213,6 +284,25 @@ namespace CTS
             this.textBox_numberOfCycles_PWM3_serial4.Text = "1";
             this.textBox_numberOfCycles_PWM3_serial5.Text = "1";
             this.textBox_numberOfCycles_PWM3_serial6.Text = "1";
+
+            this.textBox_numberOfCycles_PWM1_serial1.Enabled = true;
+            this.textBox_numberOfCycles_PWM1_serial2.Enabled = true;
+            this.textBox_numberOfCycles_PWM1_serial3.Enabled = true;
+            this.textBox_numberOfCycles_PWM1_serial4.Enabled = true;
+            this.textBox_numberOfCycles_PWM1_serial5.Enabled = true;
+            this.textBox_numberOfCycles_PWM1_serial6.Enabled = true;
+            this.textBox_numberOfCycles_PWM2_serial1.Enabled = true;
+            this.textBox_numberOfCycles_PWM2_serial2.Enabled = true;
+            this.textBox_numberOfCycles_PWM2_serial3.Enabled = true;
+            this.textBox_numberOfCycles_PWM2_serial4.Enabled = true;
+            this.textBox_numberOfCycles_PWM2_serial5.Enabled = true;
+            this.textBox_numberOfCycles_PWM2_serial6.Enabled = true;
+            this.textBox_numberOfCycles_PWM3_serial1.Enabled = true;
+            this.textBox_numberOfCycles_PWM3_serial2.Enabled = true;
+            this.textBox_numberOfCycles_PWM3_serial3.Enabled = true;
+            this.textBox_numberOfCycles_PWM3_serial4.Enabled = true;
+            this.textBox_numberOfCycles_PWM3_serial5.Enabled = true;
+            this.textBox_numberOfCycles_PWM3_serial6.Enabled = true;
             #endregion
 
             //Wait Between 默认为0，范围为：[0,255s]
@@ -235,6 +325,25 @@ namespace CTS
             this.textBox_waitBetween_PWM3_serial4.Text = "0";
             this.textBox_waitBetween_PWM3_serial5.Text = "0";
             this.textBox_waitBetween_PWM3_serial6.Text = "0";
+
+            this.textBox_waitBetween_PWM1_serial1.Enabled = true;
+            this.textBox_waitBetween_PWM1_serial2.Enabled = true;
+            this.textBox_waitBetween_PWM1_serial3.Enabled = true;
+            this.textBox_waitBetween_PWM1_serial4.Enabled = true;
+            this.textBox_waitBetween_PWM1_serial5.Enabled = true;
+            this.textBox_waitBetween_PWM1_serial6.Enabled = true;
+            this.textBox_waitBetween_PWM2_serial1.Enabled = true;
+            this.textBox_waitBetween_PWM2_serial2.Enabled = true;
+            this.textBox_waitBetween_PWM2_serial3.Enabled = true;
+            this.textBox_waitBetween_PWM2_serial4.Enabled = true;
+            this.textBox_waitBetween_PWM2_serial5.Enabled = true;
+            this.textBox_waitBetween_PWM2_serial6.Enabled = true;
+            this.textBox_waitBetween_PWM3_serial1.Enabled = true;
+            this.textBox_waitBetween_PWM3_serial2.Enabled = true;
+            this.textBox_waitBetween_PWM3_serial3.Enabled = true;
+            this.textBox_waitBetween_PWM3_serial4.Enabled = true;
+            this.textBox_waitBetween_PWM3_serial5.Enabled = true;
+            this.textBox_waitBetween_PWM3_serial6.Enabled = true;
             #endregion
 
             //Wait After 默认为0，范围为：[0,255s]
@@ -257,6 +366,25 @@ namespace CTS
             this.textBox_waitAfter_PWM3_serial4.Text = "0";
             this.textBox_waitAfter_PWM3_serial5.Text = "0";
             this.textBox_waitAfter_PWM3_serial6.Text = "0";
+
+            this.textBox_waitAfter_PWM1_serial1.Enabled = true;
+            this.textBox_waitAfter_PWM1_serial2.Enabled = true;
+            this.textBox_waitAfter_PWM1_serial3.Enabled = true;
+            this.textBox_waitAfter_PWM1_serial4.Enabled = true;
+            this.textBox_waitAfter_PWM1_serial5.Enabled = true;
+            this.textBox_waitAfter_PWM1_serial6.Enabled = true;
+            this.textBox_waitAfter_PWM2_serial1.Enabled = true;
+            this.textBox_waitAfter_PWM2_serial2.Enabled = true;
+            this.textBox_waitAfter_PWM2_serial3.Enabled = true;
+            this.textBox_waitAfter_PWM2_serial4.Enabled = true;
+            this.textBox_waitAfter_PWM2_serial5.Enabled = true;
+            this.textBox_waitAfter_PWM2_serial6.Enabled = true;
+            this.textBox_waitAfter_PWM3_serial1.Enabled = true;
+            this.textBox_waitAfter_PWM3_serial2.Enabled = true;
+            this.textBox_waitAfter_PWM3_serial3.Enabled = true;
+            this.textBox_waitAfter_PWM3_serial4.Enabled = true;
+            this.textBox_waitAfter_PWM3_serial5.Enabled = true;
+            this.textBox_waitAfter_PWM3_serial6.Enabled = true;
 
             #endregion
 
