@@ -53,6 +53,9 @@
             this.comboBox_portName = new System.Windows.Forms.ComboBox();
             this.label_portName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox_dataTime = new System.Windows.Forms.TextBox();
+            this.button_synch = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_load = new System.Windows.Forms.Button();
             this.button_save = new System.Windows.Forms.Button();
@@ -260,18 +263,20 @@
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.软件版本ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportTxtFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -514,6 +519,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.groupBox8);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox7);
             this.panel1.Controls.Add(this.groupBox6);
@@ -526,6 +532,34 @@
             this.panel1.Size = new System.Drawing.Size(823, 587);
             this.panel1.TabIndex = 3;
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textBox_dataTime);
+            this.groupBox8.Controls.Add(this.button_synch);
+            this.groupBox8.Location = new System.Drawing.Point(0, 53);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(188, 82);
+            this.groupBox8.TabIndex = 57;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Synchronize Time";
+            // 
+            // textBox_dataTime
+            // 
+            this.textBox_dataTime.Location = new System.Drawing.Point(7, 18);
+            this.textBox_dataTime.Name = "textBox_dataTime";
+            this.textBox_dataTime.Size = new System.Drawing.Size(175, 21);
+            this.textBox_dataTime.TabIndex = 1;
+            // 
+            // button_synch
+            // 
+            this.button_synch.Location = new System.Drawing.Point(7, 45);
+            this.button_synch.Name = "button_synch";
+            this.button_synch.Size = new System.Drawing.Size(175, 26);
+            this.button_synch.TabIndex = 0;
+            this.button_synch.Text = "Synchronize to device";
+            this.button_synch.UseVisualStyleBackColor = true;
+            this.button_synch.Click += new System.EventHandler(this.button_synch_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -533,9 +567,9 @@
             this.groupBox4.Controls.Add(this.button_load);
             this.groupBox4.Controls.Add(this.button_save);
             this.groupBox4.Controls.Add(this.textBox_paraCfgFilePath);
-            this.groupBox4.Location = new System.Drawing.Point(0, 55);
+            this.groupBox4.Location = new System.Drawing.Point(188, 53);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(2762, 82);
+            this.groupBox4.Size = new System.Drawing.Size(1738, 82);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Files";
@@ -564,7 +598,7 @@
             // 
             this.textBox_paraCfgFilePath.Location = new System.Drawing.Point(6, 15);
             this.textBox_paraCfgFilePath.Name = "textBox_paraCfgFilePath";
-            this.textBox_paraCfgFilePath.Size = new System.Drawing.Size(805, 21);
+            this.textBox_paraCfgFilePath.Size = new System.Drawing.Size(961, 21);
             this.textBox_paraCfgFilePath.TabIndex = 0;
             // 
             // groupBox7
@@ -2733,6 +2767,13 @@
             this.exportTxtFileToolStripMenuItem.Text = "export txt file";
             this.exportTxtFileToolStripMenuItem.Click += new System.EventHandler(this.exportTxtFileToolStripMenuItem_Click);
             // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.resetToolStripMenuItem.Text = "reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2769,12 +2810,10 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Parameter File(*.cts_cfg)|*.cts_cfg|All Files(*.*)|*.*";
             // 
-            // resetToolStripMenuItem
+            // timer2
             // 
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.resetToolStripMenuItem.Text = "reset";
-            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            this.timer2.Enabled = true;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -2799,6 +2838,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -3022,10 +3063,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button_load;
-        private System.Windows.Forms.Button button_save;
-        private System.Windows.Forms.TextBox textBox_paraCfgFilePath;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
@@ -3057,6 +3094,14 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button button_load;
+        private System.Windows.Forms.Button button_save;
+        private System.Windows.Forms.TextBox textBox_paraCfgFilePath;
+        private System.Windows.Forms.Button button_synch;
+        private System.Windows.Forms.TextBox textBox_dataTime;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

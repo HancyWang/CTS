@@ -1363,6 +1363,14 @@ namespace CTS
 
             //加载图片
             LoadPicture();
+
+            //获取系统时间
+            GetSystemDateTime();
+        }
+
+        private void GetSystemDateTime()
+        {
+            textBox_dataTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -2591,6 +2599,7 @@ namespace CTS
             #endregion
         }
 
+
         private void SendIsPCBRcvFinshed()
         {
             byte[] buffer = new byte[6];
@@ -3430,6 +3439,16 @@ namespace CTS
                      break;
                  case 0x0B: //如果是参数数据帧3
                      ParseFrame3();
+                     break;
+                 case 0x66:
+                     if (m_buffer[m_buffer[LEN] - 1] == 0x01)
+                     {
+                         MessageBox.Show("Synchronize to equipment successful!");
+                     }
+                     else
+                     {
+                         MessageBox.Show("Synchronize to equipment failed!");
+                     }
                      break;
                  default:
                      break;
@@ -7660,13 +7679,45 @@ namespace CTS
             InitPWMSet();
         }
 
-      
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            GetSystemDateTime();
+        }
 
-      
-            
+        private void button_synch_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            Byte year1 = Convert.ToByte(dt.Year / 256);
+            Byte year2 = Convert.ToByte(dt.Year % 256);
+            Byte month = Convert.ToByte(dt.Month);
+            Byte day = Convert.ToByte(dt.Day);
+            Byte hour = Convert.ToByte(dt.Hour);
+            Byte min = Convert.ToByte(dt.Minute);
+            Byte sec = Convert.ToByte(dt.Second);
 
-        
+            byte[] buffer = new byte[13];
+            buffer[HEAD] = 0xFF;
+            buffer[LEN] = 0x0B;  //11
+            buffer[CMDTYPE] = 0x01;
+            buffer[FRAME_ID] = 0x65;   //请求第一帧
 
+            buffer[4 + 0] = year1;
+            buffer[4 + 1] = year2;
+            buffer[4 + 2] = month;
+            buffer[4 + 3] = day;
+            buffer[4 + 4] = hour;
+            buffer[4 + 5] = min;
+            buffer[4 + 6] = sec;
+
+            int sum = 0;
+            for (int i = 1; i < Convert.ToInt32(buffer[LEN]); i++)
+            {
+                sum += buffer[i];
+            }
+            buffer[Convert.ToInt32(buffer[LEN])] = Convert.ToByte(sum / 256);
+            buffer[Convert.ToInt32(buffer[LEN]) + 1] = Convert.ToByte(sum % 256);
+            this.serialPort1.Write(buffer, 0, Convert.ToInt32(buffer[LEN]) + 2);
+        }
 
     }
 }
