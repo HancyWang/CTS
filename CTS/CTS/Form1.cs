@@ -35,6 +35,12 @@ namespace CTS
         private const int LEN = 1;
         private const int CMDTYPE = 2;
         private const int FRAME_ID = 3;
+
+        private int m_rtcInfo_record_numbers;  //记录收到的rtc信息条数
+        //private int m_prev_pack_No=0;
+        private int m_total_frames=0;  //总帧数
+        private int m_requestNo = 1;
+        private List<RTC_INFO> m_rtc_data_list = new List<RTC_INFO>();
        
         public Form1()
         {
@@ -69,6 +75,19 @@ namespace CTS
             public byte NUM_OF_CYCLES;
             public byte WAIT_BETWEEN;
             public byte WAIT_AFTER;
+        }
+
+
+        private struct RTC_INFO
+        {
+            public byte RTC_CODE;
+            public byte RTC_RESERVED;
+            public byte RTC_YEAR;
+            public byte RTC_MONTH;
+            public byte RTC_DAY;
+            public byte RTC_HOUR;
+            public byte RTC_MIN;
+            public byte RTC_SEC;
         }
 
 
@@ -3410,6 +3429,94 @@ namespace CTS
             WriteCommPara2File();
         }
 
+        private void get_rtc_data()
+        {
+            int record_size = (m_buffer[LEN]-2 - 4) / 8;  //有几条记录
+            if (record_size <= 0 || (m_buffer[LEN]-2 - 4) % 8 != 0)
+            {
+                return;
+            }
+
+            int j=6;
+            for(int i=0;i<record_size;i++)
+            {
+                RTC_INFO info=new RTC_INFO();
+
+                info.RTC_CODE=m_buffer[j++];
+                info.RTC_RESERVED=m_buffer[j++];
+                info.RTC_YEAR=m_buffer[j++];
+                info.RTC_MONTH=m_buffer[j++];
+                info.RTC_DAY=m_buffer[j++];
+                info.RTC_HOUR=m_buffer[j++];
+                info.RTC_MIN=m_buffer[j++];
+                info.RTC_SEC=m_buffer[j++];
+
+                m_rtc_data_list.Add(info);
+            }
+            
+            //debug
+            //MessageBox.Show(Convert.ToString(m_rtc_data_list.Count));
+        }
+ 
+        private void request_rtc_frame_x(ref int number)
+        {
+            if (m_requestNo > m_total_frames)
+                return;
+
+            byte[] buffer = new byte[8];
+            buffer[HEAD] = 0xFF;
+            buffer[LEN] = 0x06;
+            buffer[CMDTYPE] = 0x01;
+            buffer[FRAME_ID] = 0x70;   //请求RTC数据包 
+
+            buffer[4] = Convert.ToByte(number/256);   //请求第x包，x=1,2,3,4....
+            buffer[5] = Convert.ToByte(number % 256);
+
+            int sum = 0;
+            for (int i = 1; i < Convert.ToInt32(buffer[LEN]); i++)
+            {
+                sum += buffer[i];
+            }
+            buffer[Convert.ToInt32(buffer[LEN])] = Convert.ToByte(sum / 256);
+            buffer[Convert.ToInt32(buffer[LEN]) + 1] = Convert.ToByte(sum % 256);
+            this.serialPort1.Write(buffer, 0, Convert.ToInt32(buffer[LEN]) + 2);
+        }
+
+        private void get_rtc_total_record_numbers()
+        {
+            m_rtcInfo_record_numbers = m_buffer[4] * 256 * 256 * 256 + m_buffer[5] * 256 * 256 + m_buffer[6] * 256 + m_buffer[7];
+            MessageBox.Show("数据记录条数:" + Convert.ToString(m_rtcInfo_record_numbers));
+
+            System.Threading.Thread.Sleep(50);
+
+            //在接收信息之前清空信息链表
+            if (m_rtc_data_list != null)
+            {
+                m_rtc_data_list.Clear();
+            }
+            m_total_frames = 0; //清除m_total_frames
+
+            //通过m_rtcInfo_record_numbers知道一共有多少帧会传上来
+            int pageNumbers = m_rtcInfo_record_numbers / 256;  //有pageNumbers页
+            int pageRest = m_rtcInfo_record_numbers % 256;      //不足一页的，还剩下pageRest条记录
+
+            m_total_frames += 9 * pageNumbers; //9的含义：每页可以分成8+1次发送, 8个满包(8*30条记录),1个非满包(16条记录)
+
+            //不足一页的
+            m_total_frames += pageRest / 30;  //满包
+            if (pageRest % 30 != 0)
+            {
+                m_total_frames++;  //非满包的就只有一个
+            }
+            m_requestNo = 1;
+
+            request_rtc_frame_x(ref m_requestNo);
+
+            //初始化progressbar
+            progressBar1.Maximum = m_rtcInfo_record_numbers;
+           
+        }
+
         private void ParseData2Lists()
         {
             //将数据解析挂入到3个链表中
@@ -3448,6 +3555,27 @@ namespace CTS
                      else
                      {
                          MessageBox.Show("Synchronize to equipment failed!");
+                     }
+                     break;
+                 case 0x69:
+                     get_rtc_total_record_numbers();
+                     break;
+                 case 0x71:
+                     if (m_buffer[4] * 256 + m_buffer[5] == m_requestNo)
+                     {
+                         get_rtc_data();
+
+                         progressBar1.Value = m_rtc_data_list.Count;
+                         if (m_rtc_data_list.Count == m_rtcInfo_record_numbers)
+                         {
+                             MessageBox.Show("Receive rtc data successful!\nYou can save it now!");
+                             return;
+                         }
+
+                         System.Threading.Thread.Sleep(100);
+ 
+                         m_requestNo++;
+                         request_rtc_frame_x(ref m_requestNo);
                      }
                      break;
                  default:
@@ -7686,9 +7814,15 @@ namespace CTS
 
         private void button_synch_Click(object sender, EventArgs e)
         {
+            if (!serialPort1.IsOpen)
+            {
+                MessageBox.Show("Please open serial port first!");
+                return;
+            }
+
             DateTime dt = DateTime.Now;
-            Byte year1 = Convert.ToByte(dt.Year / 256);
-            Byte year2 = Convert.ToByte(dt.Year % 256);
+            Byte year1 = Convert.ToByte(dt.Year / 100);
+            Byte year2 = Convert.ToByte(dt.Year % 100);
             Byte month = Convert.ToByte(dt.Month);
             Byte day = Convert.ToByte(dt.Day);
             Byte hour = Convert.ToByte(dt.Hour);
@@ -7699,7 +7833,7 @@ namespace CTS
             buffer[HEAD] = 0xFF;
             buffer[LEN] = 0x0B;  //11
             buffer[CMDTYPE] = 0x01;
-            buffer[FRAME_ID] = 0x65;   //请求第一帧
+            buffer[FRAME_ID] = 0x65;   
 
             buffer[4 + 0] = year1;
             buffer[4 + 1] = year2;
@@ -7717,6 +7851,175 @@ namespace CTS
             buffer[Convert.ToInt32(buffer[LEN])] = Convert.ToByte(sum / 256);
             buffer[Convert.ToInt32(buffer[LEN]) + 1] = Convert.ToByte(sum % 256);
             this.serialPort1.Write(buffer, 0, Convert.ToInt32(buffer[LEN]) + 2);
+        }
+
+        private void button_get_RTC_info_Click(object sender, EventArgs e)
+        {
+            if (!serialPort1.IsOpen)
+            {
+                MessageBox.Show("Please open serial port first!");
+                return;
+            }
+
+            progressBar1.Value = 0;
+
+            byte[] buffer = new byte[6];
+            buffer[HEAD] = 0xFF;
+            buffer[LEN] = 0x04;  
+            buffer[CMDTYPE] = 0x01;
+            buffer[FRAME_ID] = 0x68;   //请求RTC数据总字节数
+
+            int sum = 0;
+            for (int i = 1; i < Convert.ToInt32(buffer[LEN]); i++)
+            {
+                sum += buffer[i];
+            }
+            buffer[Convert.ToInt32(buffer[LEN])] = Convert.ToByte(sum / 256);
+            buffer[Convert.ToInt32(buffer[LEN]) + 1] = Convert.ToByte(sum % 256);
+            this.serialPort1.Write(buffer, 0, Convert.ToInt32(buffer[LEN]) + 2);
+        }
+
+        private String code2HEX(byte code)
+        {
+            #region
+            String tmp = "";
+            switch (code)
+            {
+                case 0x11:
+                    tmp = "0x11";
+                    break;
+                case 0x12:
+                    tmp = "0x12";
+                    break;
+                case 0x13:
+                    tmp = "0x13";
+                    break;
+                case 0x14:
+                    tmp = "0x14";
+                    break;
+                case 0x15:
+                    tmp = "0x15";
+                    break;
+                case 0x16:
+                    tmp = "0x16";
+                    break;
+                case 0x17:
+                    tmp = "0x17";
+                    break;
+                case 0x18:
+                    tmp = "0x18";
+                    break;
+                case 0x19:
+                    tmp = "0x19";
+                    break;
+                case 0x20:
+                    tmp = "0x20";;
+                    break;
+                default:
+                    break;
+            }
+            return tmp;
+            #endregion
+        }
+
+        private String code2str(byte code)
+        {
+            #region
+            String tmp = "";
+            switch (code)
+            {
+                case 0x11:
+                    tmp= "System power on";
+                    break;
+                case 0x12:
+                    tmp= "Treat finished";
+                    break;
+                case 0x13:
+                    tmp= "Manual power off";
+                    break;
+                case 0x14:
+                    tmp= "Not detect hand";
+                    break;
+                case 0x15:
+                    tmp= "Low power";
+                    break;
+                case 0x16:
+                    tmp= "Over pressure";
+                    break;
+                case 0x17:
+                    tmp= "Self test success";
+                    break;
+                case 0x18:
+                    tmp= "Self test fail";
+                    break;
+                case 0x19:
+                    tmp= "Over heat";
+                    break;
+                case 0x20:
+                    tmp = "PC synchronize RTC";
+                    break;
+                default:
+                    break;
+            }
+            return tmp;
+            #endregion
+        }
+
+        private void button_save_rtc_data_Click(object sender, EventArgs e)
+        {
+            if (m_rtc_data_list.Count > 0)
+            {
+                //没有接收完,不允许操作
+                if (m_rtc_data_list.Count != m_rtcInfo_record_numbers)
+                {
+                    MessageBox.Show("Please save after receive completed!");
+                    return;
+                }
+
+                if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    var path = this.folderBrowserDialog1.SelectedPath;
+
+                    String fileName="rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")+".csv";
+                    FileStream fs = new FileStream(path + @"\" +fileName, FileMode.Create);
+                    StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+
+                    //输出码表对照
+                    sw.WriteLine("Code" + "," + "Action" +","+"Meaning" );
+                    sw.WriteLine("0x11" + "," + "System power on" + "," + "User power on the system");
+                    sw.WriteLine("0x12" + "," + "Treat finished" + "," + "Treatment finished and system power off");
+                    sw.WriteLine("0x13" + "," + "Manual power off" + "," + "User manual power off the system during treatment");
+                    sw.WriteLine("0x14" + "," + "Not detect hand" + "," + "System auto power off because of not detect hand in 20s");
+                    sw.WriteLine("0x15" + "," + "Low power" + "," + "System auto power off because of low power");
+                    sw.WriteLine("0x16" + "," + "Over pressure" + "," + "System auto power off because of over pressure");
+                    sw.WriteLine("0x17" + "," + "Self test success" + "," + "System auto power off because of self test success");
+                    sw.WriteLine("0x18" + "," + "Self test fail" + "," + "System auto power off because of self test fail");
+                    sw.WriteLine("0x19" + "," + "Over heat" + "," + "System auto power off because of over heat");
+                    sw.WriteLine("0x20" + "," + "PC synchronize RTC" + "," + "Press synchronize time button on App");
+
+                    sw.WriteLine(" " ); //空一行
+
+                    sw.WriteLine("DateTime" + "," + "Code"+ ","+ "Action");
+                    foreach (var info in m_rtc_data_list)
+                    {
+                        String str_dateTime=Convert.ToString(info.RTC_YEAR)+"/"
+                                    +Convert.ToString(info.RTC_MONTH)+"/"
+                                    +Convert.ToString(info.RTC_DAY)+" "
+                                    +Convert.ToString(info.RTC_HOUR)+":"
+                                    +Convert.ToString(info.RTC_MIN)+":"
+                                    +Convert.ToString(info.RTC_SEC);
+                        sw.WriteLine(str_dateTime + "," + code2HEX(info.RTC_CODE) + "," + code2str(info.RTC_CODE));   
+                    }
+
+                    sw.Close();
+                    fs.Close();
+                    MessageBox.Show(fileName + " save successful!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please get rtc data first!");
+            }
         }
 
     }

@@ -53,6 +53,10 @@
             this.comboBox_portName = new System.Windows.Forms.ComboBox();
             this.label_portName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button_save_rtc_data = new System.Windows.Forms.Button();
+            this.button_get_RTC_info = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox_dataTime = new System.Windows.Forms.TextBox();
             this.button_synch = new System.Windows.Forms.Button();
@@ -270,12 +274,14 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -299,7 +305,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1014, 593);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1128, 593);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel3
@@ -519,6 +525,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.groupBox9);
             this.panel1.Controls.Add(this.groupBox8);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox7);
@@ -529,14 +536,53 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(188, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(823, 587);
+            this.panel1.Size = new System.Drawing.Size(937, 587);
             this.panel1.TabIndex = 3;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.button_save_rtc_data);
+            this.groupBox9.Controls.Add(this.button_get_RTC_info);
+            this.groupBox9.Controls.Add(this.progressBar1);
+            this.groupBox9.Location = new System.Drawing.Point(195, 54);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(200, 80);
+            this.groupBox9.TabIndex = 58;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Get RTC Info";
+            // 
+            // button_save_rtc_data
+            // 
+            this.button_save_rtc_data.Location = new System.Drawing.Point(103, 47);
+            this.button_save_rtc_data.Name = "button_save_rtc_data";
+            this.button_save_rtc_data.Size = new System.Drawing.Size(75, 23);
+            this.button_save_rtc_data.TabIndex = 2;
+            this.button_save_rtc_data.Text = "Save";
+            this.button_save_rtc_data.UseVisualStyleBackColor = true;
+            this.button_save_rtc_data.Click += new System.EventHandler(this.button_save_rtc_data_Click);
+            // 
+            // button_get_RTC_info
+            // 
+            this.button_get_RTC_info.Location = new System.Drawing.Point(6, 48);
+            this.button_get_RTC_info.Name = "button_get_RTC_info";
+            this.button_get_RTC_info.Size = new System.Drawing.Size(79, 23);
+            this.button_get_RTC_info.TabIndex = 1;
+            this.button_get_RTC_info.Text = "Get ";
+            this.button_get_RTC_info.UseVisualStyleBackColor = true;
+            this.button_get_RTC_info.Click += new System.EventHandler(this.button_get_RTC_info_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(6, 20);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(178, 17);
+            this.progressBar1.TabIndex = 0;
             // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.textBox_dataTime);
             this.groupBox8.Controls.Add(this.button_synch);
-            this.groupBox8.Location = new System.Drawing.Point(0, 53);
+            this.groupBox8.Location = new System.Drawing.Point(2, 54);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(188, 82);
             this.groupBox8.TabIndex = 57;
@@ -567,9 +613,9 @@
             this.groupBox4.Controls.Add(this.button_load);
             this.groupBox4.Controls.Add(this.button_save);
             this.groupBox4.Controls.Add(this.textBox_paraCfgFilePath);
-            this.groupBox4.Location = new System.Drawing.Point(188, 53);
+            this.groupBox4.Location = new System.Drawing.Point(404, 52);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1738, 82);
+            this.groupBox4.Size = new System.Drawing.Size(1137, 82);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Files";
@@ -2728,7 +2774,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1020, 613);
+            this.groupBox2.Size = new System.Drawing.Size(1134, 613);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
@@ -2782,7 +2828,7 @@
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1020, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1134, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -2815,11 +2861,15 @@
             this.timer2.Enabled = true;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // saveFileDialog2
+            // 
+            this.saveFileDialog2.Filter = "Parameter File(*.csv)|*.cts_cfg|All Files(*.*)|*.*";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 638);
+            this.ClientSize = new System.Drawing.Size(1134, 638);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2838,6 +2888,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -3102,6 +3153,11 @@
         private System.Windows.Forms.Button button_synch;
         private System.Windows.Forms.TextBox textBox_dataTime;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button button_get_RTC_info;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button_save_rtc_data;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
     }
 }
 
