@@ -58,6 +58,7 @@
             this.button_get_RTC_info = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.button_enable_synRTC_function = new System.Windows.Forms.Button();
             this.textBox_dataTime = new System.Windows.Forms.TextBox();
             this.button_synch = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -580,6 +581,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.button_enable_synRTC_function);
             this.groupBox8.Controls.Add(this.textBox_dataTime);
             this.groupBox8.Controls.Add(this.button_synch);
             this.groupBox8.Location = new System.Drawing.Point(2, 54);
@@ -588,6 +590,16 @@
             this.groupBox8.TabIndex = 57;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Synchronize Time";
+            // 
+            // button_enable_synRTC_function
+            // 
+            this.button_enable_synRTC_function.Location = new System.Drawing.Point(7, 41);
+            this.button_enable_synRTC_function.Name = "button_enable_synRTC_function";
+            this.button_enable_synRTC_function.Size = new System.Drawing.Size(56, 34);
+            this.button_enable_synRTC_function.TabIndex = 2;
+            this.button_enable_synRTC_function.Text = "ENABLE";
+            this.button_enable_synRTC_function.UseVisualStyleBackColor = true;
+            this.button_enable_synRTC_function.Click += new System.EventHandler(this.button_enable_synRTC_function_Click);
             // 
             // textBox_dataTime
             // 
@@ -598,9 +610,10 @@
             // 
             // button_synch
             // 
-            this.button_synch.Location = new System.Drawing.Point(7, 45);
+            this.button_synch.Enabled = false;
+            this.button_synch.Location = new System.Drawing.Point(69, 41);
             this.button_synch.Name = "button_synch";
-            this.button_synch.Size = new System.Drawing.Size(175, 26);
+            this.button_synch.Size = new System.Drawing.Size(113, 34);
             this.button_synch.TabIndex = 0;
             this.button_synch.Text = "Synchronize to device";
             this.button_synch.UseVisualStyleBackColor = true;
@@ -615,7 +628,7 @@
             this.groupBox4.Controls.Add(this.textBox_paraCfgFilePath);
             this.groupBox4.Location = new System.Drawing.Point(404, 52);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1137, 82);
+            this.groupBox4.Size = new System.Drawing.Size(1626, 82);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Files";
@@ -3158,6 +3171,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button_save_rtc_data;
         private System.Windows.Forms.SaveFileDialog saveFileDialog2;
+        private System.Windows.Forms.Button button_enable_synRTC_function;
     }
 }
 

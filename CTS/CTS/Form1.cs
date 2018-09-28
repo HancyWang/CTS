@@ -3482,19 +3482,25 @@ namespace CTS
             this.serialPort1.Write(buffer, 0, Convert.ToInt32(buffer[LEN]) + 2);
         }
 
-        private void get_rtc_total_record_numbers()
+
+        private void init_rtc_releated_var()
         {
-            m_rtcInfo_record_numbers = m_buffer[4] * 256 * 256 * 256 + m_buffer[5] * 256 * 256 + m_buffer[6] * 256 + m_buffer[7];
-            MessageBox.Show("数据记录条数:" + Convert.ToString(m_rtcInfo_record_numbers));
-
-            System.Threading.Thread.Sleep(50);
-
-            //在接收信息之前清空信息链表
             if (m_rtc_data_list != null)
             {
                 m_rtc_data_list.Clear();
             }
             m_total_frames = 0; //清除m_total_frames
+            progressBar1.Value = 0;
+        }
+
+        private void get_rtc_total_record_numbers()
+        {
+            m_rtcInfo_record_numbers = m_buffer[4] * 256 * 256 * 256 + m_buffer[5] * 256 * 256 + m_buffer[6] * 256 + m_buffer[7];
+            //MessageBox.Show("数据记录条数:" + Convert.ToString(m_rtcInfo_record_numbers));
+
+            System.Threading.Thread.Sleep(50);
+
+            init_rtc_releated_var();
 
             //通过m_rtcInfo_record_numbers知道一共有多少帧会传上来
             int pageNumbers = m_rtcInfo_record_numbers / 256;  //有pageNumbers页
@@ -3514,7 +3520,6 @@ namespace CTS
 
             //初始化progressbar
             progressBar1.Maximum = m_rtcInfo_record_numbers;
-           
         }
 
         private void ParseData2Lists()
@@ -3550,6 +3555,8 @@ namespace CTS
                  case 0x66:
                      if (m_buffer[m_buffer[LEN] - 1] == 0x01)
                      {
+                         button_synch.Enabled = false;
+                         button_enable_synRTC_function.Text = "ENABLE";
                          MessageBox.Show("Synchronize to equipment successful!");
                      }
                      else
@@ -3568,11 +3575,13 @@ namespace CTS
                          progressBar1.Value = m_rtc_data_list.Count;
                          if (m_rtc_data_list.Count == m_rtcInfo_record_numbers)
                          {
+                             System.Threading.Thread.Sleep(500);
+                            // save_rtc_data();
                              MessageBox.Show("Receive rtc data successful!\nYou can save it now!");
                              return;
                          }
 
-                         System.Threading.Thread.Sleep(100);
+                         //System.Threading.Thread.Sleep(10);
  
                          m_requestNo++;
                          request_rtc_frame_x(ref m_requestNo);
@@ -7851,6 +7860,7 @@ namespace CTS
             buffer[Convert.ToInt32(buffer[LEN])] = Convert.ToByte(sum / 256);
             buffer[Convert.ToInt32(buffer[LEN]) + 1] = Convert.ToByte(sum % 256);
             this.serialPort1.Write(buffer, 0, Convert.ToInt32(buffer[LEN]) + 2);
+
         }
 
         private void button_get_RTC_info_Click(object sender, EventArgs e)
@@ -7861,7 +7871,7 @@ namespace CTS
                 return;
             }
 
-            progressBar1.Value = 0;
+            //progressBar1.Value = 0;
 
             byte[] buffer = new byte[6];
             buffer[HEAD] = 0xFF;
@@ -7965,8 +7975,9 @@ namespace CTS
             #endregion
         }
 
-        private void button_save_rtc_data_Click(object sender, EventArgs e)
+        private void save_rtc_data()
         {
+            #region
             if (m_rtc_data_list.Count > 0)
             {
                 //没有接收完,不允许操作
@@ -7980,12 +7991,12 @@ namespace CTS
                 {
                     var path = this.folderBrowserDialog1.SelectedPath;
 
-                    String fileName="rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss")+".csv";
-                    FileStream fs = new FileStream(path + @"\" +fileName, FileMode.Create);
+                    String fileName = "rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
+                    FileStream fs = new FileStream(path + @"\" + fileName, FileMode.Create);
                     StreamWriter sw = new StreamWriter(fs, Encoding.Default);
 
                     //输出码表对照
-                    sw.WriteLine("Code" + "," + "Action" +","+"Meaning" );
+                    sw.WriteLine("Code" + "," + "Code Info" + "," + "Mark");
                     sw.WriteLine("0x11" + "," + "System power on" + "," + "User power on the system");
                     sw.WriteLine("0x12" + "," + "Treat finished" + "," + "Treatment finished and system power off");
                     sw.WriteLine("0x13" + "," + "Manual power off" + "," + "User manual power off the system during treatment");
@@ -7997,18 +8008,18 @@ namespace CTS
                     sw.WriteLine("0x19" + "," + "Over heat" + "," + "System auto power off because of over heat");
                     sw.WriteLine("0x20" + "," + "PC synchronize RTC" + "," + "Press synchronize time button on App");
 
-                    sw.WriteLine(" " ); //空一行
+                    sw.WriteLine(" "); //空一行
 
-                    sw.WriteLine("DateTime" + "," + "Code"+ ","+ "Action");
+                    sw.WriteLine("DateTime" + "," + "Code" + "," + "Code Info");
                     foreach (var info in m_rtc_data_list)
                     {
-                        String str_dateTime=Convert.ToString(info.RTC_YEAR)+"/"
-                                    +Convert.ToString(info.RTC_MONTH)+"/"
-                                    +Convert.ToString(info.RTC_DAY)+" "
-                                    +Convert.ToString(info.RTC_HOUR)+":"
-                                    +Convert.ToString(info.RTC_MIN)+":"
-                                    +Convert.ToString(info.RTC_SEC);
-                        sw.WriteLine(str_dateTime + "," + code2HEX(info.RTC_CODE) + "," + code2str(info.RTC_CODE));   
+                        String str_dateTime = Convert.ToString(info.RTC_YEAR) + "/"
+                                    + Convert.ToString(info.RTC_MONTH) + "/"
+                                    + Convert.ToString(info.RTC_DAY) + " "
+                                    + Convert.ToString(info.RTC_HOUR) + ":"
+                                    + Convert.ToString(info.RTC_MIN) + ":"
+                                    + Convert.ToString(info.RTC_SEC);
+                        sw.WriteLine(str_dateTime + "," + code2HEX(info.RTC_CODE) + "," + code2str(info.RTC_CODE));
                     }
 
                     sw.Close();
@@ -8019,6 +8030,29 @@ namespace CTS
             else
             {
                 MessageBox.Show("Please get rtc data first!");
+            }
+            #endregion
+        }
+
+        private void button_save_rtc_data_Click(object sender, EventArgs e)
+        {
+            save_rtc_data();
+            init_rtc_releated_var();
+        }
+
+        private void button_enable_synRTC_function_Click(object sender, EventArgs e)
+        {
+            //button_synch.Enabled = true;
+            button_synch.Enabled = !button_synch.Enabled;
+            if (button_synch.Enabled == true)
+            {
+                button_enable_synRTC_function.Text = "DISABLE";
+                button_synch.Enabled = true;
+            }
+            else
+            {
+                button_enable_synRTC_function.Text = "ENABLE";
+                button_synch.Enabled = false;
             }
         }
 
