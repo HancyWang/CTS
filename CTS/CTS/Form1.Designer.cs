@@ -628,7 +628,7 @@
             this.groupBox4.Controls.Add(this.textBox_paraCfgFilePath);
             this.groupBox4.Location = new System.Drawing.Point(404, 52);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1626, 82);
+            this.groupBox4.Size = new System.Drawing.Size(1789, 82);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Files";
@@ -2876,7 +2876,7 @@
             // 
             // saveFileDialog2
             // 
-            this.saveFileDialog2.Filter = "Parameter File(*.csv)|*.cts_cfg|All Files(*.*)|*.*";
+            this.saveFileDialog2.Filter = "Parameter File(*.csv)|*.csv|All Files(*.*)|*.*";
             // 
             // Form1
             // 

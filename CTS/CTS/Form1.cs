@@ -7987,12 +7987,11 @@ namespace CTS
                     return;
                 }
 
-                if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                if (this.saveFileDialog2.ShowDialog() == DialogResult.OK)
                 {
-                    var path = this.folderBrowserDialog1.SelectedPath;
-
-                    String fileName = "rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
-                    FileStream fs = new FileStream(path + @"\" + fileName, FileMode.Create);
+                    //String fileName = "rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
+                    //FileStream fs = new FileStream(path + @"\" + fileName, FileMode.Create);
+                    FileStream fs = new FileStream(this.saveFileDialog2.FileName, FileMode.Create);
                     StreamWriter sw = new StreamWriter(fs, Encoding.Default);
 
                     //输出码表对照
@@ -8024,7 +8023,7 @@ namespace CTS
 
                     sw.Close();
                     fs.Close();
-                    MessageBox.Show(fileName + " save successful!");
+                    MessageBox.Show(this.saveFileDialog2.FileName + " save successful!");
                 }
             }
             else
