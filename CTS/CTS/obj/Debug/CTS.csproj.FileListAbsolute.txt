@@ -8,3 +8,6 @@ D:\VS_Practice\CTS\EAR\obj\Debug\CTS.pdb
 D:\VS_Practice\CTS\EAR\obj\Debug\CTS.csprojResolveAssemblyReference.cache
 D:\VS_Practice\CTS\EAR\obj\Debug\CTS.Form1.resources
 D:\VS_Practice\CTS\EAR\obj\Debug\CTS.Form_aboutUs_english.resources
+D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\bin\Debug\CTS.exe.config
+D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Debug\CTS.exe
+D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Debug\CTS.pdb

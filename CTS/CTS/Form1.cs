@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.IO.Ports;
 using System.IO;
+using System.Threading;
 
 namespace CTS
 {
@@ -3576,11 +3577,17 @@ namespace CTS
                          if (m_rtc_data_list.Count == m_rtcInfo_record_numbers)
                          {
                              System.Threading.Thread.Sleep(500);
-                            // save_rtc_data();
+
                              MessageBox.Show("Receive rtc data successful!\nYou can save it now!");
+
+                             //Thread th = new Thread(new ThreadStart(delegate() { save_rtc_data(); }));
+                             //th.TrySetApartmentState(ApartmentState.STA);
+                             //th.Start();
+                             //th.Join();
+
                              return;
                          }
-
+                        
                          //System.Threading.Thread.Sleep(10);
  
                          m_requestNo++;
@@ -7871,7 +7878,6 @@ namespace CTS
                 return;
             }
 
-            //progressBar1.Value = 0;
 
             byte[] buffer = new byte[6];
             buffer[HEAD] = 0xFF;
