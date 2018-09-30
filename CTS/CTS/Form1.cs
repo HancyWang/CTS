@@ -3581,7 +3581,7 @@ namespace CTS
                          {
                              System.Threading.Thread.Sleep(500);
 
-                             MessageBox.Show("Receive rtc data successful!\nYou can save it now!");
+                             MessageBox.Show("Receive RTC data successful!\n\nYou can save it now!");
 
                              //Thread th = new Thread(new ThreadStart(delegate() { save_rtc_data(); }));
                              //th.TrySetApartmentState(ApartmentState.STA);
@@ -7996,13 +7996,23 @@ namespace CTS
             #endregion
         }
 
-        private void export_rtc_log()
+        private bool export_rtc_log()
         {
             //String fileName = "rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
             //FileStream fs = new FileStream(path + @"\" + fileName, FileMode.Create);
             String str = this.saveFileDialog2.FileName;
             str = str.Insert(str.IndexOf('.'), "_log");
-            FileStream fs = new FileStream(str, FileMode.Create);
+            FileStream fs=null;
+            try
+            {
+                fs = new FileStream(str, FileMode.Create);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
 
             //输出码表对照
@@ -8036,13 +8046,25 @@ namespace CTS
 
             sw.Close();
             fs.Close();
+            return true;
         }
 
-        private void export_rtc_info_to_file()
+        private bool export_rtc_info_to_file()
         {
             String str = this.saveFileDialog2.FileName;
+
             str = str.Insert(str.IndexOf('.'), "");
-            FileStream fs1 = new FileStream(str, FileMode.Create);
+            FileStream fs1 = null;
+            try
+            {
+                fs1 = new FileStream(str, FileMode.Create);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+
             StreamWriter sw1 = new StreamWriter(fs1, Encoding.Default);
 
             Byte pre_code = 0x00;
@@ -8086,6 +8108,7 @@ namespace CTS
 
             sw1.Close();
             fs1.Close();
+            return true;
         }
 
         private void save_rtc_data()
@@ -8097,21 +8120,26 @@ namespace CTS
                 if (m_rtc_data_list.Count != m_rtcInfo_record_numbers)
                 {
                     MessageBox.Show("Please save after receive completed!");
-                    return;
+                    return ;
                 }
 
                 if (this.saveFileDialog2.ShowDialog() == DialogResult.OK)
                 {
                     //导出用户需要的rtc信息 
-                    export_rtc_info_to_file();
+                    if (!export_rtc_info_to_file())
+                    {
+                        return;
+                    }
 
-                    if (checkBox_no_need_log.Checked==false)
+                    if (checkBox_no_need_log.Checked == false)
                     {
                         //根据用户的需要导出详细的数据信息
-                        export_rtc_log(); 
-
+                        if (!export_rtc_log())
+                        {
+                            return ;
+                        }
                     }
-                    
+                
                     MessageBox.Show("RTC file save successful!");
                 }
             }
