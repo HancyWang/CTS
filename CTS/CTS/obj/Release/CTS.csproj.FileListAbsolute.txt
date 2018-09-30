@@ -25,3 +25,4 @@ D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.Properties.R
 D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.csproj.GenerateResource.Cache
 D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.exe
 D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.pdb
+D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.csprojResolveAssemblyReference.cache

@@ -7996,12 +7996,12 @@ namespace CTS
             #endregion
         }
 
-        private void export_detail_rtc_info_to_file()
+        private void export_rtc_log()
         {
             //String fileName = "rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
             //FileStream fs = new FileStream(path + @"\" + fileName, FileMode.Create);
             String str = this.saveFileDialog2.FileName;
-            str = str.Insert(str.IndexOf('.'), "_detail");
+            str = str.Insert(str.IndexOf('.'), "_log");
             FileStream fs = new FileStream(str, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs, Encoding.Default);
 
@@ -8108,7 +8108,7 @@ namespace CTS
                     if (checkBox_no_need_log.Checked==false)
                     {
                         //根据用户的需要导出详细的数据信息
-                        export_detail_rtc_info_to_file(); 
+                        export_rtc_log(); 
 
                     }
                     
