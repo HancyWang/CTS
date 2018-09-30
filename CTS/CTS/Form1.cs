@@ -1386,6 +1386,9 @@ namespace CTS
 
             //获取系统时间
             GetSystemDateTime();
+
+            //初始化noNeed checkbox
+            checkBox_no_need_log.Checked = true;
         }
 
         private void GetSystemDateTime()
@@ -7841,13 +7844,24 @@ namespace CTS
             Byte year2 = Convert.ToByte(dt.Year % 100);
             Byte month = Convert.ToByte(dt.Month);
             Byte day = Convert.ToByte(dt.Day);
+            Byte weekDay = Convert.ToByte(dt.DayOfWeek);
             Byte hour = Convert.ToByte(dt.Hour);
             Byte min = Convert.ToByte(dt.Minute);
             Byte sec = Convert.ToByte(dt.Second);
+            
+            
+            ////debug
+            //Byte year1 = Convert.ToByte(19);
+            //Byte year2 = Convert.ToByte(99);
+            //Byte month = Convert.ToByte(12);
+            //Byte day = Convert.ToByte(31);
+            //Byte hour = Convert.ToByte(23);
+            //Byte min = Convert.ToByte(59);
+            //Byte sec = Convert.ToByte(50);
 
-            byte[] buffer = new byte[13];
+            byte[] buffer = new byte[14];
             buffer[HEAD] = 0xFF;
-            buffer[LEN] = 0x0B;  //11
+            buffer[LEN] = 12;  
             buffer[CMDTYPE] = 0x01;
             buffer[FRAME_ID] = 0x65;   
 
@@ -7855,9 +7869,10 @@ namespace CTS
             buffer[4 + 1] = year2;
             buffer[4 + 2] = month;
             buffer[4 + 3] = day;
-            buffer[4 + 4] = hour;
-            buffer[4 + 5] = min;
-            buffer[4 + 6] = sec;
+            buffer[4 + 4] = weekDay;
+            buffer[4 + 5] = hour;
+            buffer[4 + 6] = min;
+            buffer[4 + 7] = sec;
 
             int sum = 0;
             for (int i = 1; i < Convert.ToInt32(buffer[LEN]); i++)
@@ -7981,6 +7996,98 @@ namespace CTS
             #endregion
         }
 
+        private void export_detail_rtc_info_to_file()
+        {
+            //String fileName = "rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
+            //FileStream fs = new FileStream(path + @"\" + fileName, FileMode.Create);
+            String str = this.saveFileDialog2.FileName;
+            str = str.Insert(str.IndexOf('.'), "_detail");
+            FileStream fs = new FileStream(str, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+
+            //输出码表对照
+            sw.WriteLine("Code" + "," + "Code Info" + "," + "Mark");
+            sw.WriteLine("0x11" + "," + "System power on" + "," + "User power on the system");
+            sw.WriteLine("0x12" + "," + "Treat finished" + "," + "Treatment finished and system power off");
+            sw.WriteLine("0x13" + "," + "Manual power off" + "," + "User manual power off the system during treatment");
+            sw.WriteLine("0x14" + "," + "Not detect hand" + "," + "System auto power off because of not detect hand in 20s");
+            sw.WriteLine("0x15" + "," + "Low power" + "," + "System auto power off because of low power");
+            sw.WriteLine("0x16" + "," + "Over pressure" + "," + "System auto power off because of over pressure");
+            sw.WriteLine("0x17" + "," + "Self test success" + "," + "System auto power off because of self test success");
+            sw.WriteLine("0x18" + "," + "Self test fail" + "," + "System auto power off because of self test fail");
+            sw.WriteLine("0x19" + "," + "Over heat" + "," + "System auto power off because of over heat");
+            sw.WriteLine("0x20" + "," + "PC synchronize RTC" + "," + "Press synchronize time button on App");
+
+            sw.WriteLine(" "); //空一行
+
+            sw.WriteLine("DateTime" + "," + "Code" + "," + "Code Info");
+            foreach (var info in m_rtc_data_list)
+            {
+                String str_dateTime = Convert.ToString(info.RTC_YEAR) + "-"
+                            + Convert.ToString(info.RTC_MONTH) + "-"
+                            + Convert.ToString(info.RTC_DAY) + " "
+                            + Convert.ToString(info.RTC_HOUR) + ":"
+                            + Convert.ToString(info.RTC_MIN) + ":"
+                            + Convert.ToString(info.RTC_SEC);
+                //DateTime dt = Convert.ToDateTime(str_dateTime);
+                //str_dateTime=dt.ToString("yy/MM/dd HH:mm:ss");
+                sw.WriteLine(str_dateTime + "," + code2HEX(info.RTC_CODE) + "," + code2str(info.RTC_CODE));
+            }
+
+            sw.Close();
+            fs.Close();
+        }
+
+        private void export_rtc_info_to_file()
+        {
+            String str = this.saveFileDialog2.FileName;
+            str = str.Insert(str.IndexOf('.'), "");
+            FileStream fs1 = new FileStream(str, FileMode.Create);
+            StreamWriter sw1 = new StreamWriter(fs1, Encoding.Default);
+
+            Byte pre_code = 0x00;
+            DateTime pre_dt = DateTime.Now;
+
+
+            sw1.WriteLine("StartTime" + "," + "EndTime" + "," + "Info" + "," + "Duration");
+            foreach (var info in m_rtc_data_list)
+            {
+                if (pre_code == 0x11)
+                {
+                    if (info.RTC_CODE != 0x20 && info.RTC_CODE != 0x11)
+                    {
+                        //可以开始写文件了
+                        DateTime startTime = pre_dt;
+                        DateTime endTime = Convert.ToDateTime(Convert.ToString(info.RTC_YEAR) + "-"
+                                                + Convert.ToString(info.RTC_MONTH) + "-"
+                                                + Convert.ToString(info.RTC_DAY) + " "
+                                                + Convert.ToString(info.RTC_HOUR) + ":"
+                                                + Convert.ToString(info.RTC_MIN) + ":"
+                                                + Convert.ToString(info.RTC_SEC));
+                        TimeSpan tsp = endTime - startTime;
+                        String str_duration = tsp.Hours.ToString() + ":" + tsp.Minutes.ToString() + ":" + tsp.Seconds.ToString();
+                        sw1.WriteLine(startTime.ToString("yy-MM-dd HH:mm:ss") + "," + endTime.ToString("yy-MM-dd HH:mm:ss")
+                            + "," + code2str(info.RTC_CODE) + "," + str_duration);
+                    }
+                }
+
+                if (info.RTC_CODE == 0x11)
+                {
+                    pre_code = info.RTC_CODE;
+                    pre_dt = Convert.ToDateTime(Convert.ToString(info.RTC_YEAR) + "-"
+                                                + Convert.ToString(info.RTC_MONTH) + "-"
+                                                + Convert.ToString(info.RTC_DAY) + " "
+                                                + Convert.ToString(info.RTC_HOUR) + ":"
+                                                + Convert.ToString(info.RTC_MIN) + ":"
+                                                + Convert.ToString(info.RTC_SEC));
+                }
+            }
+
+
+            sw1.Close();
+            fs1.Close();
+        }
+
         private void save_rtc_data()
         {
             #region
@@ -7995,41 +8102,17 @@ namespace CTS
 
                 if (this.saveFileDialog2.ShowDialog() == DialogResult.OK)
                 {
-                    //String fileName = "rtc_data " + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
-                    //FileStream fs = new FileStream(path + @"\" + fileName, FileMode.Create);
-                    FileStream fs = new FileStream(this.saveFileDialog2.FileName, FileMode.Create);
-                    StreamWriter sw = new StreamWriter(fs, Encoding.Default);
+                    //导出用户需要的rtc信息 
+                    export_rtc_info_to_file();
 
-                    //输出码表对照
-                    sw.WriteLine("Code" + "," + "Code Info" + "," + "Mark");
-                    sw.WriteLine("0x11" + "," + "System power on" + "," + "User power on the system");
-                    sw.WriteLine("0x12" + "," + "Treat finished" + "," + "Treatment finished and system power off");
-                    sw.WriteLine("0x13" + "," + "Manual power off" + "," + "User manual power off the system during treatment");
-                    sw.WriteLine("0x14" + "," + "Not detect hand" + "," + "System auto power off because of not detect hand in 20s");
-                    sw.WriteLine("0x15" + "," + "Low power" + "," + "System auto power off because of low power");
-                    sw.WriteLine("0x16" + "," + "Over pressure" + "," + "System auto power off because of over pressure");
-                    sw.WriteLine("0x17" + "," + "Self test success" + "," + "System auto power off because of self test success");
-                    sw.WriteLine("0x18" + "," + "Self test fail" + "," + "System auto power off because of self test fail");
-                    sw.WriteLine("0x19" + "," + "Over heat" + "," + "System auto power off because of over heat");
-                    sw.WriteLine("0x20" + "," + "PC synchronize RTC" + "," + "Press synchronize time button on App");
-
-                    sw.WriteLine(" "); //空一行
-
-                    sw.WriteLine("DateTime" + "," + "Code" + "," + "Code Info");
-                    foreach (var info in m_rtc_data_list)
+                    if (checkBox_no_need_log.Checked==false)
                     {
-                        String str_dateTime = Convert.ToString(info.RTC_YEAR) + "/"
-                                    + Convert.ToString(info.RTC_MONTH) + "/"
-                                    + Convert.ToString(info.RTC_DAY) + " "
-                                    + Convert.ToString(info.RTC_HOUR) + ":"
-                                    + Convert.ToString(info.RTC_MIN) + ":"
-                                    + Convert.ToString(info.RTC_SEC);
-                        sw.WriteLine(str_dateTime + "," + code2HEX(info.RTC_CODE) + "," + code2str(info.RTC_CODE));
-                    }
+                        //根据用户的需要导出详细的数据信息
+                        export_detail_rtc_info_to_file(); 
 
-                    sw.Close();
-                    fs.Close();
-                    MessageBox.Show(this.saveFileDialog2.FileName + " save successful!");
+                    }
+                    
+                    MessageBox.Show("RTC file save successful!");
                 }
             }
             else
@@ -8059,6 +8142,11 @@ namespace CTS
                 button_enable_synRTC_function.Text = "ENABLE";
                 button_synch.Enabled = false;
             }
+        }
+
+        private void checkBox_no_need_log_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
 
     }

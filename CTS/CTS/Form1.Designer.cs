@@ -276,6 +276,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
+            this.checkBox_no_need_log = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -542,6 +543,7 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.checkBox_no_need_log);
             this.groupBox9.Controls.Add(this.button_save_rtc_data);
             this.groupBox9.Controls.Add(this.button_get_RTC_info);
             this.groupBox9.Controls.Add(this.progressBar1);
@@ -554,9 +556,9 @@
             // 
             // button_save_rtc_data
             // 
-            this.button_save_rtc_data.Location = new System.Drawing.Point(103, 47);
+            this.button_save_rtc_data.Location = new System.Drawing.Point(53, 48);
             this.button_save_rtc_data.Name = "button_save_rtc_data";
-            this.button_save_rtc_data.Size = new System.Drawing.Size(75, 23);
+            this.button_save_rtc_data.Size = new System.Drawing.Size(46, 23);
             this.button_save_rtc_data.TabIndex = 2;
             this.button_save_rtc_data.Text = "Save";
             this.button_save_rtc_data.UseVisualStyleBackColor = true;
@@ -564,9 +566,9 @@
             // 
             // button_get_RTC_info
             // 
-            this.button_get_RTC_info.Location = new System.Drawing.Point(6, 48);
+            this.button_get_RTC_info.Location = new System.Drawing.Point(5, 48);
             this.button_get_RTC_info.Name = "button_get_RTC_info";
-            this.button_get_RTC_info.Size = new System.Drawing.Size(79, 23);
+            this.button_get_RTC_info.Size = new System.Drawing.Size(42, 23);
             this.button_get_RTC_info.TabIndex = 1;
             this.button_get_RTC_info.Text = "Get ";
             this.button_get_RTC_info.UseVisualStyleBackColor = true;
@@ -628,7 +630,7 @@
             this.groupBox4.Controls.Add(this.textBox_paraCfgFilePath);
             this.groupBox4.Location = new System.Drawing.Point(404, 52);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1789, 82);
+            this.groupBox4.Size = new System.Drawing.Size(1952, 82);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Files";
@@ -2878,6 +2880,17 @@
             // 
             this.saveFileDialog2.Filter = "Parameter File(*.csv)|*.csv|All Files(*.*)|*.*";
             // 
+            // checkBox_no_need_log
+            // 
+            this.checkBox_no_need_log.AutoSize = true;
+            this.checkBox_no_need_log.Location = new System.Drawing.Point(104, 51);
+            this.checkBox_no_need_log.Name = "checkBox_no_need_log";
+            this.checkBox_no_need_log.Size = new System.Drawing.Size(90, 16);
+            this.checkBox_no_need_log.TabIndex = 3;
+            this.checkBox_no_need_log.Text = "No need log";
+            this.checkBox_no_need_log.UseVisualStyleBackColor = true;
+            this.checkBox_no_need_log.CheckedChanged += new System.EventHandler(this.checkBox_no_need_log_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2902,6 +2915,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -3172,6 +3186,7 @@
         private System.Windows.Forms.Button button_save_rtc_data;
         private System.Windows.Forms.SaveFileDialog saveFileDialog2;
         private System.Windows.Forms.Button button_enable_synRTC_function;
+        private System.Windows.Forms.CheckBox checkBox_no_need_log;
     }
 }
 
