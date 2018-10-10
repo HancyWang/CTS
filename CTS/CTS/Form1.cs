@@ -42,6 +42,7 @@ namespace CTS
         private int m_total_frames=0;  //总帧数
         private int m_requestNo = 1;
         private List<RTC_INFO> m_rtc_data_list = new List<RTC_INFO>();
+        private bool m_b_saveRtcFile = true;
        
         public Form1()
         {
@@ -8136,11 +8137,15 @@ namespace CTS
                         //根据用户的需要导出详细的数据信息
                         if (!export_rtc_log())
                         {
-                            return ;
+                            return;
                         }
                     }
-                
+                    m_b_saveRtcFile = true;
                     MessageBox.Show("RTC file save successful!");
+                }
+                else
+                {
+                    m_b_saveRtcFile = false;
                 }
             }
             else
@@ -8153,7 +8158,10 @@ namespace CTS
         private void button_save_rtc_data_Click(object sender, EventArgs e)
         {
             save_rtc_data();
-            init_rtc_releated_var();
+            if (m_b_saveRtcFile)
+            {
+                init_rtc_releated_var();
+            }
         }
 
         private void button_enable_synRTC_function_Click(object sender, EventArgs e)

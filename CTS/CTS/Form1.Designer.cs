@@ -54,6 +54,7 @@
             this.label_portName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.checkBox_no_need_log = new System.Windows.Forms.CheckBox();
             this.button_save_rtc_data = new System.Windows.Forms.Button();
             this.button_get_RTC_info = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -276,7 +277,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
-            this.checkBox_no_need_log = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -547,16 +547,27 @@
             this.groupBox9.Controls.Add(this.button_save_rtc_data);
             this.groupBox9.Controls.Add(this.button_get_RTC_info);
             this.groupBox9.Controls.Add(this.progressBar1);
-            this.groupBox9.Location = new System.Drawing.Point(195, 54);
+            this.groupBox9.Location = new System.Drawing.Point(193, 54);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(200, 80);
+            this.groupBox9.Size = new System.Drawing.Size(209, 80);
             this.groupBox9.TabIndex = 58;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Get RTC Info";
             // 
+            // checkBox_no_need_log
+            // 
+            this.checkBox_no_need_log.AutoSize = true;
+            this.checkBox_no_need_log.Location = new System.Drawing.Point(103, 51);
+            this.checkBox_no_need_log.Name = "checkBox_no_need_log";
+            this.checkBox_no_need_log.Size = new System.Drawing.Size(102, 16);
+            this.checkBox_no_need_log.TabIndex = 3;
+            this.checkBox_no_need_log.Text = "No detail log";
+            this.checkBox_no_need_log.UseVisualStyleBackColor = true;
+            this.checkBox_no_need_log.CheckedChanged += new System.EventHandler(this.checkBox_no_need_log_CheckedChanged);
+            // 
             // button_save_rtc_data
             // 
-            this.button_save_rtc_data.Location = new System.Drawing.Point(53, 48);
+            this.button_save_rtc_data.Location = new System.Drawing.Point(51, 48);
             this.button_save_rtc_data.Name = "button_save_rtc_data";
             this.button_save_rtc_data.Size = new System.Drawing.Size(46, 23);
             this.button_save_rtc_data.TabIndex = 2;
@@ -588,7 +599,7 @@
             this.groupBox8.Controls.Add(this.button_synch);
             this.groupBox8.Location = new System.Drawing.Point(2, 54);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(188, 82);
+            this.groupBox8.Size = new System.Drawing.Size(188, 80);
             this.groupBox8.TabIndex = 57;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Synchronize Time";
@@ -628,9 +639,9 @@
             this.groupBox4.Controls.Add(this.button_load);
             this.groupBox4.Controls.Add(this.button_save);
             this.groupBox4.Controls.Add(this.textBox_paraCfgFilePath);
-            this.groupBox4.Location = new System.Drawing.Point(404, 52);
+            this.groupBox4.Location = new System.Drawing.Point(405, 54);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1952, 82);
+            this.groupBox4.Size = new System.Drawing.Size(530, 80);
             this.groupBox4.TabIndex = 56;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Files";
@@ -659,7 +670,7 @@
             // 
             this.textBox_paraCfgFilePath.Location = new System.Drawing.Point(6, 15);
             this.textBox_paraCfgFilePath.Name = "textBox_paraCfgFilePath";
-            this.textBox_paraCfgFilePath.Size = new System.Drawing.Size(961, 21);
+            this.textBox_paraCfgFilePath.Size = new System.Drawing.Size(750, 21);
             this.textBox_paraCfgFilePath.TabIndex = 0;
             // 
             // groupBox7
@@ -2879,17 +2890,6 @@
             // saveFileDialog2
             // 
             this.saveFileDialog2.Filter = "Parameter File(*.csv)|*.csv|All Files(*.*)|*.*";
-            // 
-            // checkBox_no_need_log
-            // 
-            this.checkBox_no_need_log.AutoSize = true;
-            this.checkBox_no_need_log.Location = new System.Drawing.Point(104, 51);
-            this.checkBox_no_need_log.Name = "checkBox_no_need_log";
-            this.checkBox_no_need_log.Size = new System.Drawing.Size(90, 16);
-            this.checkBox_no_need_log.TabIndex = 3;
-            this.checkBox_no_need_log.Text = "No need log";
-            this.checkBox_no_need_log.UseVisualStyleBackColor = true;
-            this.checkBox_no_need_log.CheckedChanged += new System.EventHandler(this.checkBox_no_need_log_CheckedChanged);
             // 
             // Form1
             // 
