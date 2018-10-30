@@ -25,3 +25,13 @@ D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.Properties.R
 D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.csproj.GenerateResource.Cache
 D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.exe
 D:\Users\Administrator\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.pdb
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\bin\Release\CTS.exe.config
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\bin\Release\CTS.exe
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\bin\Release\CTS.pdb
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.Form1.resources
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.Form_aboutUs_english.resources
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.Properties.Resources.resources
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.csproj.GenerateResource.cache
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.csproj.CoreCompileInputs.cache
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.exe
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.pdb

@@ -8020,7 +8020,7 @@ namespace CTS
             sw.WriteLine("Code" + "," + "Code Info" + "," + "Mark");
             sw.WriteLine("0x11" + "," + "System power on" + "," + "User power on the system");
             sw.WriteLine("0x12" + "," + "Treat finished" + "," + "Treatment finished and system power off");
-            sw.WriteLine("0x13" + "," + "Manual power off" + "," + "User manual power off the system during treatment");
+            sw.WriteLine("0x13" + "," + "Manual power off" + "," + "User manual power off the system");
             sw.WriteLine("0x14" + "," + "Not detect hand" + "," + "System auto power off because of not detect hand in 20s");
             sw.WriteLine("0x15" + "," + "Low power" + "," + "System auto power off because of low power");
             sw.WriteLine("0x16" + "," + "Over pressure" + "," + "System auto power off because of over pressure");
