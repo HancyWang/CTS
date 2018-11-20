@@ -7973,7 +7973,7 @@ namespace CTS
                     tmp= "Not detect hand";
                     break;
                 case 0x15:
-                    tmp= "Low power";
+                    tmp= "No power";
                     break;
                 case 0x16:
                     tmp= "Over pressure";
@@ -8022,7 +8022,7 @@ namespace CTS
             sw.WriteLine("0x12" + "," + "Treat finished" + "," + "Treatment finished and system power off");
             sw.WriteLine("0x13" + "," + "Manual power off" + "," + "User manual power off the system");
             sw.WriteLine("0x14" + "," + "Not detect hand" + "," + "System auto power off because of not detect hand in 20s");
-            sw.WriteLine("0x15" + "," + "Low power" + "," + "System auto power off because of low power");
+            sw.WriteLine("0x15" + "," + "No power" + "," + "System auto power off because of no power");
             sw.WriteLine("0x16" + "," + "Over pressure" + "," + "System auto power off because of over pressure");
             sw.WriteLine("0x17" + "," + "Self test success" + "," + "System auto power off because of self test success");
             sw.WriteLine("0x18" + "," + "Self test fail" + "," + "System auto power off because of self test fail");
