@@ -3034,27 +3034,27 @@ namespace CTS
             }
             if (//duty cycle
                 #region
-                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial1.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial2.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial3.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial4.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial5.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial6.Text) < 5 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial1.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial2.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial3.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial4.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial5.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM1_serial6.Text) < 0 ||
 
-                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial1.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial2.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial3.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial4.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial5.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial6.Text) < 5 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial1.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial2.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial3.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial4.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial5.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM2_serial6.Text) < 0 ||
 
-                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial1.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial2.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial3.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial4.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial5.Text) < 5 ||
-                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial6.Text) < 5 
-                #endregion
+                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial1.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial2.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial3.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial4.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial5.Text) < 0 ||
+                Convert.ToInt32(this.textBox_dutyCycle_PWM3_serial6.Text) < 0
+            #endregion
                 )
             {
                 return 2;
@@ -4677,7 +4677,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5576,7 +5576,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5600,7 +5600,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5623,7 +5623,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5646,7 +5646,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5669,7 +5669,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5692,7 +5692,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5715,7 +5715,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5738,7 +5738,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5761,7 +5761,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5784,7 +5784,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5807,7 +5807,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5830,7 +5830,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5853,7 +5853,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5876,7 +5876,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5899,7 +5899,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5922,7 +5922,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
@@ -5945,7 +5945,7 @@ namespace CTS
                         return;
                 }
                 Int32 num = Convert.ToInt32(((TextBox)sender).Text);
-                if (num < 5 || num > 100)
+                if (num < 0 || num > 100)
                 {
                     MessageBox.Show("Out of range,please input again!");
                     ((TextBox)sender).Text = "";
