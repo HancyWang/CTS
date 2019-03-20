@@ -2015,8 +2015,6 @@ namespace CTS
                 m_SerialPortOpened = true;
                 this.comboBox_portName.Enabled = false;
                 LoadPicture();
-
-                
             }
             else
             {

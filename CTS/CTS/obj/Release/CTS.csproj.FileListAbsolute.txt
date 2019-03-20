@@ -35,3 +35,4 @@ D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.csproj.GenerateReso
 D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.csproj.CoreCompileInputs.cache
 D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.exe
 D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.pdb
+D:\Users\LENOVO\Documents\GitHub\CTS\CTS\CTS\obj\Release\CTS.csprojAssemblyReference.cache
